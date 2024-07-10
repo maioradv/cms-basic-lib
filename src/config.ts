@@ -9,6 +9,7 @@ export type ApiConfigs = {
   },
   version?:ApiVersion,
   sandbox?:boolean,
+  disableCache?:boolean
 }
 
 export type ValidatedApiConfigs = ApiConfigs & WithRequired<ApiConfigs,'version'|'sandbox'>
@@ -21,6 +22,7 @@ export function validateConfigs(configs:ApiConfigs): ValidatedApiConfigs {
   return {
     ...configs,
     version: configs.version ?? LATEST_API_VERSION,
-    sandbox: configs.sandbox ?? false
+    sandbox: configs.sandbox ?? false,
+    disableCache: configs.disableCache ?? false
   }
 }

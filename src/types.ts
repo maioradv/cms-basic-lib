@@ -11,7 +11,8 @@ export const SUPPORTED_API_VERSIONS = [
 
 export enum ApiHeader {
   Authorization = 'Authorization',
-  ApiVersion = 'X-Api-Version'
+  ApiVersion = 'X-Api-Version',
+  ApiCacheControl = 'X-Api-Cache-Control'
 }
 
 export type Metafield = {

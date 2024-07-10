@@ -27,6 +27,7 @@ export class MaiorCmsApiClient implements ClientApiI
   protected _initClient(): Axios {
     axios.defaults.baseURL = this.configApi.sandbox ? `http://${this.configApi.host}` : `https://${this.configApi.host}`;
     axios.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version
+    axios.defaults.headers.common[ApiHeader.ApiCacheControl] = this.configApi.disableCache ? 'no-cache' : 'caching'
     axios.defaults.headers.common['Content-Type'] = 'application/json'
     return axios
   }
