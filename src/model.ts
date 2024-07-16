@@ -1,4 +1,4 @@
-import { Axios } from "axios"
+import { Axios, AxiosRequestConfig } from "axios"
 import { GraphApiError, RestApiError } from "./error"
 import { ResolverDef } from "./core/types/resolver"
 import { AccessTokenDto } from "./auth/types"
@@ -6,13 +6,14 @@ import { AccessTokenDto } from "./auth/types"
 export class ApiModule {
   constructor(private client:Axios){}
 
-  protected async _call<Res,Req = Record<string,any>>(method:CallMethod,path:string,data?:Req): Promise<Res> {
+  protected async _call<Res,Req = Record<string,any>>(method:CallMethod,path:string,data?:Req,opts?:AxiosRequestConfig): Promise<Res> {
     try {
       const response = await this.client.request({
         method:method,
         url:path,
         data: method !== 'get' ? data ?? undefined : undefined,
-        params: method === 'get' ? data ?? undefined : undefined
+        params: method === 'get' ? data ?? undefined : undefined,
+        ...opts
       })
       return response.data as Res
     }

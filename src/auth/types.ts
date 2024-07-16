@@ -1,6 +1,5 @@
 import { ApiToken } from "../apitokens/types";
 import { Customer } from "../customers/types";
-import { DashboardAccess } from "../dashboard-accesses/types";
 
 export type AccessTokenDto = {
   access_token:string;
@@ -32,7 +31,7 @@ export type JwtPayload = {
 
 export type Jwt = {
   payload:JwtPayload;
-  Customer?:Customer & { DashboardAccess: DashboardAccess[]};
+  Customer?:Customer;
   ApiToken?:ApiToken;
 }
 
@@ -59,5 +58,9 @@ export enum Permission {
   read_roles = 'read_roles',
   write_roles = 'write_roles',
   read_popups = 'read_popups',
-  write_popups = 'write_popups'
+  write_popups = 'write_popups',
+  read_configs = 'read_configs',
+  write_configs = 'write_configs',
+  write_io_operations = 'write_io_operations',
+  read_io_operations = 'read_io_operations',
 }

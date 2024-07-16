@@ -1,12 +1,12 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
+export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiToken']> = {
   query:{
-    customers:{
-      name:'customers',
-      query: `query CustomerList($limit: Int, $after: Int, $before: Int){
-        customers(limit: $limit, after: $after, before: $before){
+    apiTokens:{
+      name:'apiTokens',
+      query: `query ApiTokenList($limit: Int, $after: Int, $before: Int){
+        apiTokens(limit: $limit, after: $after, before: $before){
           edges {
             node {
               id
@@ -15,10 +15,10 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
           }
           nodes {
             id
-            email
-            password
             name
-            active
+            uuid
+            permissions
+            readOnly
             createdAt
             updatedAt
           }
@@ -33,10 +33,10 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
     },
   },
   mutation:{
-    removeCustomer:{
-      name:'removeCustomer',
-      query: `mutation CustomerDelete($id: [Int!]!){
-        removeCustomer(id: $id) {
+    removeApiToken:{
+      name:'removeApiToken',
+      query: `mutation ApiTokenDelete($id: [Int!]!){
+        removeApiToken(id: $id) {
           count
         }
       }`,
@@ -44,4 +44,4 @@ export const customersResolvers:Resolvers<['customers'],['removeCustomer']> = {
   }
 }
 
-export type QueryCustomerGQLDto = PaginatedGQLQueryDto
+export type QueryApiTokenGQLDto = PaginatedGQLQueryDto

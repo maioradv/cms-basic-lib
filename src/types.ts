@@ -24,4 +24,7 @@ export type Translation = {
   value:string,
   locale:string
 }
+
+export type WithRelations<T, R extends object> = T & R
 export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
+export type OmitRequire<T, O extends keyof T = null, R extends keyof T = null> = Partial<Omit<T,O>> & { [P in R]-?: T[P] }
