@@ -3,10 +3,10 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ImagesResolvers, QueryImageGQLDto } from "./graphql";
-import { CreateImage, Image, QueryImageDto } from "./types";
+import { CreateImageDto, Image, QueryImageDto } from "./types";
 
 export default class Images extends ApiModule {
-  create(args:CreateImage): Promise<Image> {
+  create(args:CreateImageDto): Promise<Image> {
     return this._call<Image>('post','/images',args,{
       headers:{
         'Content-Type':'multipart/form-data'

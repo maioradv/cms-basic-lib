@@ -11,7 +11,7 @@ export type QueryParamsDto<T extends SortingDto,H extends ClausesDto> = {
 export function queryParams<T extends SortingDto,H extends ClausesDto>(args:QueryParamsDto<T,H>): Record<string,any> {
   return {
     ...pagination(args.pagination ?? {}),
-    ...sorting(args.sorting ?? {}),
+    ...sorting(args.sorting),
     ...where(args.where ?? {})
   }
 }

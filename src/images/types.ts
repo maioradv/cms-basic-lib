@@ -15,7 +15,7 @@ export type Image = {
   updatedAt: Date;
 }
 
-export type CreateImage = {
+export type CreateImageDto = {
   file:ReadStream
 }
 
