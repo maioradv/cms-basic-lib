@@ -30,10 +30,10 @@ export type CollectionImage = {
   updatedAt: Date;
 }
 
-export type CreateCollection = OmitRequire<Collection,'id'|'createdAt'|'updatedAt'|'slug','title'> & {
+export type CreateCollectionDto = OmitRequire<Collection,'id'|'createdAt'|'updatedAt'|'slug','title'> & {
   products?:number[];
 }
-export type UpdateCollection = Partial<Omit<CreateCollection,'products'>>
+export type UpdateCollectionDto = Partial<Omit<CreateCollectionDto,'products'>>
 
 export type SortingCollectionDto = SortingParamsDto<{
   title?:Sorting,

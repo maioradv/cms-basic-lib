@@ -101,11 +101,11 @@ export const CollectionsResolvers:Resolvers<['collections'],['updateManyCollecti
 
 export type UpdateCollectionProductsListDto = OmitRequire<ProductCollection,'collectionId'|'createdAt'|'updatedAt','productId'>
 export type UpdateManyCollectionsListDto = OmitRequire<Collection,'slug'|'createdAt'|'updatedAt'|'metafields'|'translations','id'>
-export type ArgsUpdateProducts = {
+export type ArgsUpdateProductsDto = {
   collectionId:number,
   updateList: UpdateCollectionProductsListDto[]
 }
-export type ArgsUpdateMany = {
+export type ArgsUpdateManyDto = {
   updateList: UpdateManyCollectionsListDto[]
 }
 

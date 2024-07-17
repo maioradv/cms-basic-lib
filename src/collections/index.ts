@@ -5,11 +5,11 @@ import { Image } from "../images/types";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ProductCollection } from "../products/types";
 import { WithRelation } from "../types";
-import { ArgsUpdateMany, ArgsUpdateProducts, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
-import { Collection, CollectionImage, CreateCollection, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionDto, FindAllCollectionProductsDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollection, UpdateCollectionImageDto } from "./types";
+import { ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
+import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionDto, FindAllCollectionProductsDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
 
 export default class Collections extends ApiModule implements RestApiModuleI, GraphApiModuleI {
-  create(args:CreateCollection): Promise<Collection> {
+  create(args:CreateCollectionDto): Promise<Collection> {
     return this._call('post','/collections',args)
   }
 
@@ -21,7 +21,7 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._call('get',`/collections/${id}`)
   }
 
-  update(id:number,data:UpdateCollection): Promise<Collection> {
+  update(id:number,data:UpdateCollectionDto): Promise<Collection> {
     return this._call('patch',`/collections/${id}`,data)
   }
 
@@ -33,11 +33,11 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._graphql(CollectionsResolvers.query.collections,args)
   }
 
-  updateMany(args:ArgsUpdateMany): Promise<Collection[]> {
+  updateMany(args:ArgsUpdateManyDto): Promise<Collection[]> {
     return this._graphql(CollectionsResolvers.mutation.updateManyCollections,args)
   }
 
-  updateProducts(args:ArgsUpdateProducts): Promise<ProductCollection[]> {
+  updateProducts(args:ArgsUpdateProductsDto): Promise<ProductCollection[]> {
     return this._graphql(CollectionsResolvers.mutation.updateCollectionProducts,args)
   }
 

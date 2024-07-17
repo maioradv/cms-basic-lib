@@ -7,7 +7,7 @@ import { CreateImageDto, Image, QueryImageDto } from "./types";
 
 export default class Images extends ApiModule {
   create(args:CreateImageDto): Promise<Image> {
-    return this._call<Image>('post','/images',args,{
+    return this._call('post','/images',args,{
       headers:{
         'Content-Type':'multipart/form-data'
       }
@@ -15,18 +15,18 @@ export default class Images extends ApiModule {
   }
 
   findAll(args:QueryImageDto = {}): Promise<PaginatedDto<Image>> {
-    return this._call<PaginatedDto<Image>>('get','/images',queryParams(args))
+    return this._call('get','/images',queryParams(args))
   } 
 
   findOne(id:number): Promise<Image> {
-    return this._call<Image>('get',`/images/${id}`)
+    return this._call('get',`/images/${id}`)
   }
 
   remove(id:number): Promise<Image> {
-    return this._call<Image>('delete',`/images/${id}`)
+    return this._call('delete',`/images/${id}`)
   }
   
   list(args:QueryImageGQLDto = {}): Promise<PaginatedGQL<Image>> {
-    return this._graphql<PaginatedGQL<Image>>(ImagesResolvers.query.images,args)
+    return this._graphql(ImagesResolvers.query.images,args)
   }
 }

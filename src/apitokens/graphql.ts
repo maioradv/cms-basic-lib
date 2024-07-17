@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiToken']> = {
+export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens']> = {
   query:{
     apiTokens:{
       name:'apiTokens',
@@ -33,10 +33,10 @@ export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiToken']> = {
     },
   },
   mutation:{
-    removeApiToken:{
-      name:'removeApiToken',
+    removeApiTokens:{
+      name:'removeApiTokens',
       query: `mutation ApiTokenDelete($id: [Int!]!){
-        removeApiToken(id: $id) {
+        removeApiTokens(id: $id) {
           count
         }
       }`,

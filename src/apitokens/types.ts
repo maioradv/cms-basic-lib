@@ -13,8 +13,8 @@ export type ApiToken = {
   updatedAt: Date;
 }
 
-export type CreateApiToken = Omit<ApiToken,'id'|'createdAt'|'updatedAt'|'uuid'|'readOnly'>
-export type UpdateApiToken = Partial<CreateApiToken>
+export type CreateApiTokenDto = Omit<ApiToken,'id'|'createdAt'|'updatedAt'|'uuid'|'readOnly'>
+export type UpdateApiTokenDto = Partial<CreateApiTokenDto>
 
 export type SortingApiTokenDto = SortingParamsDto<{
   name?:Sorting,

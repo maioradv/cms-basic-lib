@@ -8,6 +8,7 @@ import { AuthError } from "./error";
 import ApiTokens from "./apitokens";
 import Collections from "./collections";
 import Images from "./images";
+import Configs from "./configs";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -16,6 +17,7 @@ export class MaiorCmsApiClient implements ClientApiI
   authentication:Auth;
   apiTokens:ApiTokens;
   collections:Collections;
+  configs:Configs;
   images:Images;
 
   constructor(protected config: ApiConfigs) {
@@ -36,6 +38,7 @@ export class MaiorCmsApiClient implements ClientApiI
     this.authentication = new Auth(this.client)
     this.apiTokens = new ApiTokens(this.client)
     this.collections = new Collections(this.client)
+    this.configs = new Configs(this.client)
     this.images = new Images(this.client)
   }
 
