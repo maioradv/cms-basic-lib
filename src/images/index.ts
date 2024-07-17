@@ -1,7 +1,6 @@
 import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { ApiModule } from "../model";
 import { ImagesResolvers, QueryImageGQLDto } from "./graphql";
 import { CreateImageDto, Image, QueryImageDto } from "./types";
 

@@ -9,6 +9,9 @@ import ApiTokens from "./apitokens";
 import Collections from "./collections";
 import Images from "./images";
 import Configs from "./configs";
+import IO from "./io";
+import Languages from "./languages";
+import Roles from "./roles";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -19,6 +22,9 @@ export class MaiorCmsApiClient implements ClientApiI
   collections:Collections;
   configs:Configs;
   images:Images;
+  io:IO;
+  languages:Languages;
+  roles:Roles;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -40,6 +46,9 @@ export class MaiorCmsApiClient implements ClientApiI
     this.collections = new Collections(this.client)
     this.configs = new Configs(this.client)
     this.images = new Images(this.client)
+    this.io = new IO(this.client);
+    this.languages = new Languages(this.client)
+    this.roles = new Roles(this.client)
   }
 
   async auth(): Promise<AccessTokenDto> {
