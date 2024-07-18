@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const ConfigsResolvers:Resolvers<['configs'],['removeConfigs']> = {
+export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeConfigs','initTiDelizioConfig']> = {
   query:{
     configs:{
       name:'configs',
@@ -35,6 +35,25 @@ export const ConfigsResolvers:Resolvers<['configs'],['removeConfigs']> = {
         }
       }`,
     },
+    TiDelizioConfig:{
+      name:'TiDelizioConfig',
+      query:`query {
+        TiDelizioConfig {
+          accountsApiToken
+          allowAdvancedMenu
+          allowDiscounts
+          allowLocalization
+          allowPopup
+          allowProductVideo
+          dashboardId
+          maxMenuCollectionNumber
+          maxProductImageNumber
+          maxProductsCollectionNumber
+          plan
+          qrLinkRedirect
+        }
+      }`
+    }
   },
   mutation:{
     removeConfigs:{
@@ -42,6 +61,24 @@ export const ConfigsResolvers:Resolvers<['configs'],['removeConfigs']> = {
       query: `mutation ConfigDelete($id: [Int!]!){
         removeConfigs(id: $id) {
           count
+        }
+      }`,
+    },  
+    initTiDelizioConfig:{
+      name:'initTiDelizioConfig',
+      query: `mutation ConfigInitTiDelizio($plan: TiDelizioPlan!, $config: TiDelizioConfigDto){
+        initTiDelizioConfig(plan: $plan, config: $config) {
+          id
+          name
+          value
+          description
+          translations {
+            key
+            locale
+            value
+          }
+          createdAt
+          updatedAt
         }
       }`,
     },   

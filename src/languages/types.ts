@@ -27,8 +27,8 @@ export type SortingLanguageDto = SortingParamsDto<{
 export type ClausesLanguageDto = WhereClausesDto<{
   name?:StringClause,
   locale?:StringClause,
-  active?:StringClause,
-  published?:StringClause,
+  active?:BooleanClause,
+  published?:BooleanClause,
 }>
 
 export type QueryLanguageDto = QueryParamsDto<SortingLanguageDto,ClausesLanguageDto>

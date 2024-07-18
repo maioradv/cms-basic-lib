@@ -12,6 +12,8 @@ import Configs from "./configs";
 import IO from "./io";
 import Languages from "./languages";
 import Roles from "./roles";
+import Popups from "./popups";
+import PopupTriggers from "./popups/triggers";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -24,6 +26,8 @@ export class MaiorCmsApiClient implements ClientApiI
   images:Images;
   io:IO;
   languages:Languages;
+  popups:Popups;
+  popupTriggers:PopupTriggers;
   roles:Roles;
 
   constructor(protected config: ApiConfigs) {
@@ -48,6 +52,8 @@ export class MaiorCmsApiClient implements ClientApiI
     this.images = new Images(this.client)
     this.io = new IO(this.client);
     this.languages = new Languages(this.client)
+    this.popups = new Popups(this.client)
+    this.popupTriggers = new PopupTriggers(this.client)
     this.roles = new Roles(this.client)
   }
 

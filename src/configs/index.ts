@@ -3,6 +3,7 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ConfigsResolvers, QueryConfigGQLDto } from "./graphql";
+import { TiDelizioConfig, TiDelizioPlan } from "./services/ti-delizio.config";
 import { Config, CreateConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
 
 export default class Configs extends ApiModule implements RestApiModuleI, GraphApiModuleI {
@@ -34,5 +35,13 @@ export default class Configs extends ApiModule implements RestApiModuleI, GraphA
     return this._graphql(ConfigsResolvers.mutation.removeConfigs,{
       id
     })
+  }
+
+  TiDelizioConfig(): Promise<TiDelizioConfig> {
+    return this._graphql(ConfigsResolvers.query.TiDelizioConfig)
+  }
+
+  initTiDelizioConfig(plan:TiDelizioPlan,config?:TiDelizioConfig): Promise<Config[]> {
+    return this._graphql(ConfigsResolvers.mutation.initTiDelizioConfig,{plan,config})
   }
 }

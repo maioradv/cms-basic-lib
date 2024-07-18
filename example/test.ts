@@ -1,6 +1,7 @@
 import { createReadStream } from "fs";
-import { maiorCmsApiClient, ApiVersion } from "../src";
+import { maiorCmsApiClient, ApiVersion, PopupModal, TiDelizioPlan } from "../src";
 import { join } from "path";
+import { PopupTarget, PopupTriggerRule } from "../src/popups/types";
 
 async function example() {
   const api = maiorCmsApiClient({
@@ -13,7 +14,6 @@ async function example() {
   })
   await api.auth()
   //const file = createReadStream(join(__dirname,'Immagine2.png'))
-
   
   
 }
