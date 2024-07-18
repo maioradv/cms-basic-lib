@@ -14,6 +14,10 @@ import Languages from "./languages";
 import Roles from "./roles";
 import Popups from "./popups";
 import PopupTriggers from "./popups/triggers";
+import ProductAttributes from "./productAttributes";
+import ProductAttributeValues from "./productAttributes/values";
+import Products from "./products";
+import ProductVariants from "./products/variants";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -28,6 +32,10 @@ export class MaiorCmsApiClient implements ClientApiI
   languages:Languages;
   popups:Popups;
   popupTriggers:PopupTriggers;
+  productAttributes:ProductAttributes;
+  productAttributeValues:ProductAttributeValues;
+  products:Products;
+  productVariants:ProductVariants;
   roles:Roles;
 
   constructor(protected config: ApiConfigs) {
@@ -54,6 +62,10 @@ export class MaiorCmsApiClient implements ClientApiI
     this.languages = new Languages(this.client)
     this.popups = new Popups(this.client)
     this.popupTriggers = new PopupTriggers(this.client)
+    this.productAttributes = new ProductAttributes(this.client)
+    this.productAttributeValues = new ProductAttributeValues(this.client)
+    this.products = new Products(this.client)
+    this.productVariants = new ProductVariants(this.client)
     this.roles = new Roles(this.client)
   }
 
