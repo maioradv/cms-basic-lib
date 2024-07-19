@@ -18,6 +18,8 @@ export * from './productAttributes/types'
 export * from './products/types'
 export * from './roles/types'
 
+export * from './core/dto/pagination'
+
 export { TiDelizioPlan } from './configs/services/ti-delizio.config'
 
 export function maiorCmsApiClient(opt:MaiorCmsApiConfigs): MaiorCmsApiClient {
