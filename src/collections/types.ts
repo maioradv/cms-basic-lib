@@ -3,7 +3,7 @@ import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
 import { CreateProductCollectionDto, Product, ProductCollection, ProductImage } from "../products/types";
-import { Metafield, OmitRequire, Translation, WithRelation } from "../types";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export type Collection = {
   id: number;
@@ -53,7 +53,10 @@ export type ClausesCollectionDto = WhereClausesDto<{
 }>
 
 export type QueryCollectionDto = QueryParamsDto<SortingCollectionDto,ClausesCollectionDto>
-export type FindAllCollectionDto = WithRelation<Collection,'CollectionImage',WithRelation<CollectionImage,'Image',Image>[]>
+export type FindAllCollectionDto = WithRelations<Collection,{
+  CollectionImage:WithRelation<CollectionImage,'Image',Image>[],
+  children: Collection[]
+}>
 export type CreateCollectionImageDto = OmitRequire<CollectionImage,'collectionId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdateCollectionImageDto = Omit<CreateCollectionImageDto,'file'>
 export type CreateProductOnCollectionDto = Omit<CreateProductCollectionDto,'collectionId'>
