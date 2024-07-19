@@ -69,6 +69,10 @@ export class MaiorCmsApiClient implements ClientApiI
     this.roles = new Roles(this.client)
   }
 
+  _setAccessToken(accessToken:string) {
+    this.client.defaults.headers.common[ApiHeader.Authorization] = `Bearer ${accessToken}`
+  }
+
   async auth(): Promise<AccessTokenDto> {
     if(!this.configApi.credentials) throw new AuthError('Missing credentials')
     const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.jwt(this.configApi.credentials.accessToken)
