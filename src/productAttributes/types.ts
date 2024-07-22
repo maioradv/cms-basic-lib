@@ -39,6 +39,7 @@ export type SortingProductAttributeDto = SortingParamsDto<{
 export type ClausesProductAttributeDto = WhereClausesDto<{
   name?:StringClause,
   published?:BooleanClause,
+  slug?:StringClause[]
 }>
 
 export type QueryProductAttributeDto = QueryParamsDto<SortingProductAttributeDto,ClausesProductAttributeDto>
