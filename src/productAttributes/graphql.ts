@@ -105,4 +105,6 @@ export const ProductAttributeValuesResolvers:Resolvers<['productAttributeValues'
   }
 }
 
-export type QueryProductAttributeValueGQLDto = PaginatedGQLQueryDto
+export type QueryProductAttributeValueGQLDto = PaginatedGQLQueryDto & {
+  attributeSlug?:string
+}
