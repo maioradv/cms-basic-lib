@@ -17,10 +17,11 @@ export * from './popups/types'
 export * from './productAttributes/types'
 export * from './products/types'
 export * from './roles/types'
+export * from './settings/types'
 
 export * from './core/dto/pagination'
 
-export { TiDelizioPlan } from './configs/services/ti-delizio.config'
+export { TiDelizioPlan, TiDelizioConfig } from './configs/services/ti-delizio.config'
 
 export function maiorCmsApiClient(opt:MaiorCmsApiConfigs): MaiorCmsApiClient {
   return new MaiorCmsApiClient(opt)
