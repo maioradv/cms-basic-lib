@@ -2,7 +2,7 @@ import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../c
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
-import { CreateProductCollectionDto, Product, ProductCollection, ProductImage } from "../products/types";
+import { CreateProductCollectionDto, Product, ProductCollection, ProductImage, ProductVariant } from "../products/types";
 import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export type Collection = {
@@ -60,10 +60,14 @@ export type FindAllCollectionDto = WithRelations<Collection,{
 export type CreateCollectionImageDto = OmitRequire<CollectionImage,'collectionId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdateCollectionImageDto = Omit<CreateCollectionImageDto,'file'>
 export type CreateProductOnCollectionDto = Omit<CreateProductCollectionDto,'collectionId'>
-export type FindAllCollectionProductsDto = WithRelation<ProductCollection,'Product',WithRelation<Product,'ProductImage',WithRelation<ProductImage,'Image',Image>[]>>
+export type FindAllCollectionProductsDto = WithRelation<ProductCollection,'Product',WithRelations<Product,{
+  ProductImage:WithRelation<ProductImage,'Image',Image>[],
+  ProductVariant:ProductVariant[]
+}>>
 export type QueryCollectionProductsDto = Omit<QueryParamsDto<
     SortingParamsDto<{}>,
     WhereClausesDto<{
-      productAttributeValueId?:NumberClause,
+      attributes?:NumberClause,
+      excludeAttributes?:NumberClause
     }>
   >,'sorting'>
