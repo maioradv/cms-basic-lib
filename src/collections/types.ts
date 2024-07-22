@@ -62,7 +62,6 @@ export type UpdateCollectionImageDto = Omit<CreateCollectionImageDto,'file'>
 export type CreateProductOnCollectionDto = Omit<CreateProductCollectionDto,'collectionId'>
 export type FindAllCollectionProductsDto = WithRelation<ProductCollection,'Product',WithRelations<Product,{
   ProductImage:WithRelation<ProductImage,'Image',Image>[],
-  ProductVariant:ProductVariant[]
 }>>
 export type QueryCollectionProductsDto = Omit<QueryParamsDto<
     SortingParamsDto<{}>,

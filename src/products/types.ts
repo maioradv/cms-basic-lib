@@ -77,7 +77,8 @@ export type CreateProductAttributeValueProductDto = OmitRequire<ProductAttribute
 export type FindAllProductDto = WithRelation<Product,'ProductImage',WithRelation<ProductImage,'Image',Image>[]>
 export type FindOneProductDto = WithRelations<Product,{
   attributes:WithRelation<ProductAttributeValueProduct,'ProductAttributeValue',ProductAttributeValue>[],
-  ProductVariant:ProductVariant[]
+  ProductVariant:ProductVariant[],
+  ProductImage:WithRelation<ProductImage,'Image',Image>[]
 }>
 
 export type SortingProductDto = SortingParamsDto<{
@@ -90,7 +91,7 @@ export type ClausesProductDto = WhereClausesDto<{
   subtitle?:StringClause,
   description?:StringClause,
   collectionId?:NumberClause,
-  productAttributeValueId?:NumberClause,
+  attributes?:NumberClause,
   published?:BooleanClause,
 }>
 
