@@ -2,7 +2,7 @@ import { BooleanClause, EnumClause, StringClause, WhereClausesDto } from "../cor
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
-import { Metafield, OmitRequire, Translation, WithRelation } from "../types";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export enum PopupTarget {
   menu = 'menu',
@@ -11,8 +11,7 @@ export enum PopupTarget {
 }
 
 export enum PopupModal {
-  image = 'image',
-  text = 'text'
+  standard = 'standard'
 }
 
 export enum PopupTriggerRule {
@@ -65,7 +64,10 @@ export type UpdatePopupImageDto = Omit<CreatePopupImageDto,'file'>
 export type CreatePopupTriggerDto = OmitRequire<PopupTrigger,'id'|'createdAt'|'updatedAt'|'popupId','name'|'rule'|'value'>
 export type UpdatePopupTriggerDto = Partial<CreatePopupTriggerDto>
 
-export type FindOnePopupDto = WithRelation<Popup,'PopupTrigger',WithRelation<PopupTrigger,'PopupImage',WithRelation<PopupImage,'Image',Image>[]>[]>
+export type FindOnePopupDto = WithRelations<Popup,{
+  PopupTrigger:PopupTrigger[],
+  PopupImage:WithRelation<PopupImage,'Image',Image>[]
+}>
 
 export type SortingPopupDto = SortingParamsDto<{
   name?:Sorting,

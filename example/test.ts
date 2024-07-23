@@ -1,5 +1,5 @@
 import { createReadStream } from "fs";
-import { maiorCmsApiClient, ApiVersion } from "../src";
+import { maiorCmsApiClient, ApiVersion, PopupModal, PopupTarget, PopupTriggerRule } from "../src";
 import { join } from "path";
 
 async function example() {
@@ -13,6 +13,33 @@ async function example() {
   })
   await api.auth()
   //const file = createReadStream(join(__dirname,'Immagine2.png'))
+  await api.popups.create({
+    name:'test menu',
+    modal:PopupModal.standard,
+    target:PopupTarget.menuDetail,
+    triggers:[
+      {
+        name:'test',
+        rule: PopupTriggerRule.eventName,
+        value: 'pageView'
+      },
+      {
+        name:'element',
+        rule: PopupTriggerRule.elementDetailId,
+        value: '1'
+      }
+    ],
+    metafields:[
+      {
+        key:'title',
+        value:'titolo popup menu'
+      },
+      {
+        key:'body',
+        value:'corpo del popup menu'
+      }
+    ]
+  })
 }
 
 example()
