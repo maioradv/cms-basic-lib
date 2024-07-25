@@ -6,7 +6,7 @@ import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ProductCollection } from "../products/types";
 import { WithRelation } from "../types";
 import { ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
-import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionDto, FindAllCollectionProductsDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
+import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindOneCollectionDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
 
 export default class Collections extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateCollectionDto): Promise<Collection> {
@@ -17,7 +17,7 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._call('get','/collections',queryParams(args))
   } 
 
-  findOne(id:number): Promise<Collection> {
+  findOne(id:number): Promise<FindOneCollectionDto> {
     return this._call('get',`/collections/${id}`)
   }
 
