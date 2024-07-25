@@ -66,7 +66,8 @@ export type FindAllCollectionProductsDto = WithRelation<ProductCollection,'Produ
 export type QueryCollectionProductsDto = Omit<QueryParamsDto<
     SortingParamsDto<{}>,
     WhereClausesDto<{
-      attributes?:NumberClause,
-      excludeAttributes?:NumberClause
+      includeAttributes?:NumberClause,
+      excludeAttributes?:NumberClause,
+      excludeAllAttributes?:NumberClause,
     }>
   >,'sorting'>

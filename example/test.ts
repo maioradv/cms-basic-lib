@@ -5,6 +5,7 @@ import { join } from "path";
 async function example() {
   const api = maiorCmsApiClient({
     sandbox:true,
+    disableCache:true,
     host:'localhost:3001',
     version:ApiVersion.July24,
     credentials:{
@@ -12,8 +13,12 @@ async function example() {
     }
   })
   await api.auth()
-  //const file = createReadStream(join(__dirname,'Immagine2.png'))
-  await api.popups.create({
+  const file = createReadStream(join(__dirname,'pizza1.jpg'))
+  //api.popups.findAll().then(({data,meta}) => console.log(data))
+  /*await api.popups.createImage(9,{
+    file
+  })*/
+  /*await api.popups.create({
     name:'test menu',
     modal:PopupModal.standard,
     target:PopupTarget.menuDetail,
@@ -39,7 +44,12 @@ async function example() {
         value:'corpo del popup menu'
       }
     ]
-  })
+  })*/
+  api.collections.findAllProducts(1,{
+    where:{
+      includeAttributes:[1,2]
+    }
+  }).then(v => console.log(v))
 }
 
 example()
