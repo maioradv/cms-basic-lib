@@ -54,7 +54,7 @@ export type ClausesCollectionDto = WhereClausesDto<{
 
 export type QueryCollectionDto = QueryParamsDto<SortingCollectionDto,ClausesCollectionDto>
 export type FindOneCollectionDto = WithRelations<Collection,{
-  parent: Collection
+  parent: Collection|null
 }>
 export type FindAllCollectionDto = WithRelations<Collection,{
   CollectionImage:WithRelation<CollectionImage,'Image',Image>[],

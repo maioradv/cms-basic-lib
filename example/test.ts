@@ -45,9 +45,9 @@ async function example() {
       }
     ]
   })*/
-  api.collections.findAllProducts(4,{
+  api.collections.findAll({
     where:{
-      excludeAttributes:[1,2]
+      parentId:3
     }
   }).then(v => console.log(v))
 }
