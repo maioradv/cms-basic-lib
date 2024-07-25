@@ -58,8 +58,8 @@ export const ProductAttributeValuesResolvers:Resolvers<['productAttributeValues'
   query:{
     productAttributeValues:{
       name:'productAttributeValues',
-      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int){
-        productAttributeValues(limit: $limit, after: $after, before: $before){
+      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int, $attributeSlug: String){
+        productAttributeValues(limit: $limit, after: $after, before: $before, attributeSlug: $attributeSlug){
           edges {
             node {
               id
