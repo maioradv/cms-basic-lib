@@ -21,6 +21,10 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._call('get',`/collections/${id}`)
   }
 
+  findSlug(slug:string): Promise<FindOneCollectionDto> {
+    return this._call('get',`/collections/slug/${slug}`)
+  }
+
   update(id:number,data:UpdateCollectionDto): Promise<Collection> {
     return this._call('patch',`/collections/${id}`,data)
   }
