@@ -8,7 +8,7 @@ import { ProductAttributeValue, QueryProductAttributeValueDto, UpdateProductAttr
 export default class ProductAttributeValues extends ApiModule implements GraphApiModuleI {
 
   findAll(args:QueryProductAttributeValueDto = {}): Promise<PaginatedDto<ProductAttributeValue>> {
-    return this._call('get','/product-attributes-values',queryParams(args))
+    return this._call('get','/product-attribute-values',queryParams(args))
   } 
 
   update(id:number,data:UpdateProductAttributeValueDto): Promise<ProductAttributeValue> {
