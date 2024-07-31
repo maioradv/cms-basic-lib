@@ -58,8 +58,8 @@ export const ProductAttributeValuesResolvers:Resolvers<['productAttributeValues'
   query:{
     productAttributeValues:{
       name:'productAttributeValues',
-      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int, $attributeSlug: String){
-        productAttributeValues(limit: $limit, after: $after, before: $before, attributeSlug: $attributeSlug){
+      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int, $attributeSlug: String, $published: Boolean){
+        productAttributeValues(limit: $limit, after: $after, before: $before, attributeSlug: $attributeSlug, published: $published){
           edges {
             node {
               id
@@ -106,5 +106,6 @@ export const ProductAttributeValuesResolvers:Resolvers<['productAttributeValues'
 }
 
 export type QueryProductAttributeValueGQLDto = PaginatedGQLQueryDto & {
-  attributeSlug?:string
+  attributeSlug?:string,
+  published?:boolean
 }

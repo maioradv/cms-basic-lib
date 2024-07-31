@@ -1,10 +1,15 @@
-import { PaginatedGQL } from "../core/dto/pagination";
+import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
 import { RemoveGQL } from "../core/model/remove-gql.response";
+import { queryParams } from "../core/utils/queryParams";
 import { ApiModule, GraphApiModuleI } from "../model";
 import { ProductAttributeValuesResolvers, QueryProductAttributeValueGQLDto } from "./graphql";
-import { ProductAttributeValue, UpdateProductAttributeValueDto } from "./types";
+import { ProductAttributeValue, QueryProductAttributeValueDto, UpdateProductAttributeValueDto } from "./types";
 
 export default class ProductAttributeValues extends ApiModule implements GraphApiModuleI {
+
+  findAll(args:QueryProductAttributeValueDto = {}): Promise<PaginatedDto<ProductAttributeValue>> {
+    return this._call('get','/product-attributes-values',queryParams(args))
+  } 
 
   update(id:number,data:UpdateProductAttributeValueDto): Promise<ProductAttributeValue> {
     return this._call('patch',`/product-attribute-values/${id}`,data)
