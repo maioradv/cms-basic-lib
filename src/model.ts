@@ -43,6 +43,7 @@ export class ApiModule {
 
 export interface ClientApiI {
   auth: () => Promise<AccessTokenDto>,
+  jwt: (accessToken:string) => Promise<AccessTokenDto>,
 }
 
 export interface RestApiModuleI {
