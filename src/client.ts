@@ -82,4 +82,10 @@ export class MaiorCmsApiClient implements ClientApiI
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }
+
+  async jwt(accessToken:string): Promise<AccessTokenDto> {
+    const access = await this.authentication.jwt(accessToken)
+    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    return access
+  }
 }
