@@ -48,7 +48,7 @@ export type ClausesCollectionDto = WhereClausesDto<{
   parentId?:NumberClause,
   productId?:NumberClause,
   published?:BooleanClause,
-  noParents?:BooleanClause,
+  hasParent?:BooleanClause,
   allowChildren?:BooleanClause,
 }>
 
