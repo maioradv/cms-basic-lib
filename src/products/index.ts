@@ -1,3 +1,4 @@
+import { Collection } from "../collections/types";
 import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
 import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
@@ -57,6 +58,10 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
   removeImage(productId:number,imageId:number): Promise<ProductImage> {
     return this._call('delete',`/products/${productId}/images/${imageId}`)
   }
+
+  findAllCollections(productId:number): Promise<WithRelation<ProductCollection,'Collection',Collection>[]> {
+    return this._call('get',`/products/${productId}/collections`)
+  } 
 
   linkCollection(productId:number,args:CreateCollectionOnProductDto): Promise<ProductCollection> {
     return this._call('post',`/products/${productId}/collections`,args)
