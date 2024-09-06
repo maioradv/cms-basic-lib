@@ -58,7 +58,8 @@ export type FindOneCollectionDto = WithRelations<Collection,{
 }>
 export type FindAllCollectionDto = WithRelations<Collection,{
   CollectionImage:WithRelation<CollectionImage,'Image',Image>[],
-  children: Collection[]
+  children: Collection[],
+  parent: Collection|null
 }>
 export type CreateCollectionImageDto = OmitRequire<CollectionImage,'collectionId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdateCollectionImageDto = Omit<CreateCollectionImageDto,'file'>
