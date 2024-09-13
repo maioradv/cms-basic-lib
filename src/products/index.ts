@@ -39,8 +39,16 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
     })
   }
 
-  createImage(productId:number,args?:CreateProductImageDto,formData?:FormData): Promise<ProductImage> {
-    return this._call('post',`/products/${productId}/images`,args ?? formData,{
+  createImage(productId:number,args:CreateProductImageDto): Promise<ProductImage> {
+    return this._call('post',`/products/${productId}/images`,args,{
+      headers:{
+        'Content-Type':'multipart/form-data'
+      }
+    })
+  }
+
+  RNCreateImage(productId:number,formData:any): Promise<ProductImage> {
+    return this._call('post',`/products/${productId}/images`,formData,{
       headers:{
         'Content-Type':'multipart/form-data'
       }

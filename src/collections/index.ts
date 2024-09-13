@@ -51,8 +51,16 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     })
   }
 
-  createImage(collectionId:number,args?:CreateCollectionImageDto,formData?:FormData): Promise<CollectionImage> {
-    return this._call('post',`/collections/${collectionId}/images`,args ?? formData,{
+  createImage(collectionId:number,args:CreateCollectionImageDto): Promise<CollectionImage> {
+    return this._call('post',`/collections/${collectionId}/images`,args,{
+      headers:{
+        'Content-Type':'multipart/form-data'
+      }
+    })
+  }
+
+  RNCreateImage(collectionId:number,formData:any): Promise<CollectionImage> {
+    return this._call('post',`/collections/${collectionId}/images`,formData,{
       headers:{
         'Content-Type':'multipart/form-data'
       }
