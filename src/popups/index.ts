@@ -38,8 +38,8 @@ export default class Popups extends ApiModule implements RestApiModuleI, GraphAp
     })
   }
 
-  createImage(popupId:number,args:CreatePopupImageDto): Promise<PopupImage> {
-    return this._call('post',`/popups/${popupId}/images`,args,{
+  createImage(popupId:number,args?:CreatePopupImageDto,formData?:FormData): Promise<PopupImage> {
+    return this._call('post',`/popups/${popupId}/images`,args ?? formData,{
       headers:{
         'Content-Type':'multipart/form-data'
       }
