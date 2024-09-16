@@ -1,7 +1,9 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
+import { OmitRequire } from "../types";
+import { ProductAttributeValueProduct } from "./types";
 
-export const ProductsResolvers:Resolvers<['products'],['removeProducts']> = {
+export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateManyProductAttributes']> = {
   query:{
     products:{
       name:'products',
@@ -52,7 +54,25 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts']> = {
         }
       }`,
     },   
+    updateManyProductAttributes:{
+      name:'updateManyProductAttributes',
+      query:`mutation ProductAttributesUpdate($productId: Int!, $updateList:[UpdateManyProductAttributesListDto!]!) {
+        updateManyProductAttributes(id:$productId,updateList:$updateList){
+          productAttributeValueId
+          productId
+          position
+          createdAt
+          updatedAt
+        }
+      }`
+    }
   }
+}
+
+export type UpdateProductAttributesListDto = OmitRequire<ProductAttributeValueProduct,'productId'|'createdAt'|'updatedAt','productAttributeValueId'>
+export type ArgsUpdateProductAttributesDto = {
+  productId:number,
+  updateList: UpdateProductAttributesListDto[]
 }
 
 export type QueryProductGQLDto = PaginatedGQLQueryDto

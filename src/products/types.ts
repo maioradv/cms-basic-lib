@@ -1,8 +1,9 @@
+import { Collection } from "../collections/types";
 import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
-import { ProductAttributeValue } from "../productAttributes/types";
+import { ProductAttribute, ProductAttributeValue } from "../productAttributes/types";
 import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export type Product = {
@@ -62,7 +63,10 @@ export type CreateProductDto = OmitRequire<Product,'id'|'createdAt'|'updatedAt'|
   attributes?:number[],
   variants?:CreateProductVariantDto[]
 }
-export type UpdateProductDto = Partial<Omit<CreateProductDto,'variants'|'attributes'>>
+export type UpdateProductDto = Partial<CreateProductDto> & {
+  removeAttributes:number[],
+  removeVariants:number[]
+}
 
 export type CreateProductImageDto = OmitRequire<ProductImage,'productId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdateProductImageDto = Omit<CreateProductImageDto,'file'>
@@ -75,10 +79,14 @@ export type CreateCollectionOnProductDto = Omit<CreateProductCollectionDto,'prod
 export type CreateProductAttributeValueProductDto = OmitRequire<ProductAttributeValueProduct,'productId'|'createdAt'|'updatedAt'|'position'>
 
 export type FindAllProductDto = WithRelation<Product,'ProductImage',WithRelation<ProductImage,'Image',Image>[]>
+export type AttributeValueProduct = WithRelations<ProductAttributeValueProduct,{
+  ProductAttributeValue:WithRelation<ProductAttributeValue,'ProductAttribute',ProductAttribute>
+}>
 export type FindOneProductDto = WithRelations<Product,{
-  attributes:WithRelation<ProductAttributeValueProduct,'ProductAttributeValue',ProductAttributeValue>[],
+  attributes:AttributeValueProduct[],
   ProductVariant:ProductVariant[],
-  ProductImage:WithRelation<ProductImage,'Image',Image>[]
+  ProductImage:WithRelation<ProductImage,'Image',Image>[],
+  ProductCollection:WithRelation<ProductCollection,'Collection',Collection>[]
 }>
 
 export type SortingProductDto = SortingParamsDto<{

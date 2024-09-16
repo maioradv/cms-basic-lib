@@ -6,7 +6,7 @@ import { Image } from "../images/types";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
 import { WithRelation } from "../types";
-import { ProductsResolvers, QueryProductGQLDto } from "./graphql";
+import { ArgsUpdateProductAttributesDto, ProductsResolvers, QueryProductGQLDto } from "./graphql";
 
 export default class Products extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateProductDto): Promise<Product> {
@@ -93,5 +93,9 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
 
   unlinkAttributeValue(productId:number,attributeValueId:number): Promise<ProductAttributeValueProduct> {
     return this._call('delete',`/products/${productId}/attribute-values/${attributeValueId}`)
+  }
+
+  updateProductAttributes(args:ArgsUpdateProductAttributesDto): Promise<ProductAttributeValueProduct[]> {
+    return this._graphql(ProductsResolvers.mutation.updateManyProductAttributes,args)
   }
 }
