@@ -64,8 +64,8 @@ export type CreateProductDto = OmitRequire<Product,'id'|'createdAt'|'updatedAt'|
   variants?:CreateProductVariantDto[]
 }
 export type UpdateProductDto = Partial<CreateProductDto> & {
-  removeAttributes:number[],
-  removeVariants:number[]
+  removeAttributes?:number[],
+  removeVariants?:number[]
 }
 
 export type CreateProductImageDto = OmitRequire<ProductImage,'productId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
