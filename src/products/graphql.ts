@@ -57,7 +57,7 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateM
     updateManyProductAttributes:{
       name:'updateManyProductAttributes',
       query:`mutation ProductAttributesUpdate($productId: Int!, $updateList:[UpdateManyProductAttributesListDto!]!) {
-        updateManyProductAttributes(id:$productId,updateList:$updateList){
+        updateManyProductAttributes(productId:$productId,updateList:$updateList){
           productAttributeValueId
           productId
           position
