@@ -1,14 +1,14 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
-import { OmitRequire } from "../types";
-import { ProductAttributeValueProduct } from "./types";
+import { OmitRequire, WithRelation } from "../types";
+import { Product, ProductAttributeValueProduct, ProductVariant } from "./types";
 
 export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateManyProductAttributes']> = {
   query:{
     products:{
       name:'products',
-      query: `query ProductList($limit: Int, $after: Int, $before: Int){
-        products(limit: $limit, after: $after, before: $before){
+      query: `query ProductList($limit: Int, $after: Int, $before: Int, $collectionId: Int){
+        products(limit: $limit, after: $after, before: $before, collectionId: $collectionId){
           edges {
             node {
               id
@@ -22,6 +22,21 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateM
             subtitle
             description
             tags
+            ProductVariant {
+              id
+              description
+              translations {
+                key
+                locale
+                value
+              }
+              price
+              fullPrice
+              productId
+              published
+              createdAt
+              updatedAt
+            }
             translations {
               key
               locale
@@ -75,4 +90,8 @@ export type ArgsUpdateProductAttributesDto = {
   updateList: UpdateProductAttributesListDto[]
 }
 
-export type QueryProductGQLDto = PaginatedGQLQueryDto
+export type QueryProductGQLDto = PaginatedGQLQueryDto & {
+  collectionId?:number
+}
+
+export type FindAllProductGQLDto = WithRelation<Product,'ProductVariant',ProductVariant[]>

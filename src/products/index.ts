@@ -6,7 +6,7 @@ import { Image } from "../images/types";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
 import { WithRelation } from "../types";
-import { ArgsUpdateProductAttributesDto, ProductsResolvers, QueryProductGQLDto } from "./graphql";
+import { ArgsUpdateProductAttributesDto, FindAllProductGQLDto, ProductsResolvers, QueryProductGQLDto } from "./graphql";
 
 export default class Products extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateProductDto): Promise<Product> {
@@ -29,7 +29,7 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
     return this._call('delete',`/products/${id}`)
   }
   
-  list(args:QueryProductGQLDto = {}): Promise<PaginatedGQL<Product>> {
+  list(args:QueryProductGQLDto = {}): Promise<PaginatedGQL<FindAllProductGQLDto>> {
     return this._graphql(ProductsResolvers.query.products,args)
   }
 

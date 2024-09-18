@@ -75,6 +75,7 @@ export type SortingPopupDto = SortingParamsDto<{
 }>
 
 export type ClausesPopupDto = WhereClausesDto<{
+  search?:StringClause,
   name?:StringClause,
   published?:BooleanClause,
   target?:EnumClause<PopupTarget>

@@ -97,6 +97,7 @@ export type SortingProductDto = SortingParamsDto<{
 }>
 
 export type ClausesProductDto = WhereClausesDto<{
+  search?:StringClause,
   title?:StringClause,
   subtitle?:StringClause,
   description?:StringClause,

@@ -103,6 +103,7 @@ export type UpdateCollectionProductsListDto = OmitRequire<ProductCollection,'col
 export type UpdateManyCollectionsListDto = OmitRequire<Collection,'slug'|'createdAt'|'updatedAt'|'metafields'|'translations','id'>
 export type ArgsUpdateProductsDto = {
   collectionId:number,
+  /** List has a limit of 50 elements */
   updateList: UpdateCollectionProductsListDto[]
 }
 export type ArgsUpdateManyDto = {

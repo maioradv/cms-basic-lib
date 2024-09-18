@@ -42,6 +42,7 @@ export type SortingCollectionDto = SortingParamsDto<{
 }>
 
 export type ClausesCollectionDto = WhereClausesDto<{
+  search?:StringClause,
   title?:StringClause,
   subtitle?:StringClause,
   description?:StringClause,
