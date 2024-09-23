@@ -75,6 +75,7 @@ export type QueryCollectionProductsDto = Omit<QueryParamsDto<
     WhereClausesDto<{
       includeAttributes?:NumberClause,
       excludeAttributes?:NumberClause,
+      search?:StringClause,
       published?:BooleanClause
     }>
   >,'sorting'>
