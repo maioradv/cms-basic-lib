@@ -1,9 +1,9 @@
 import { ServiceConfig } from "../model";
 
 export enum TiDelizioPlan {
-  basic = 'basic',
   standard = 'standard',
-  pro = 'pro'
+  plus = 'plus',
+  premium = 'premium'
 }
 
 export interface TiDelizioConfig extends ServiceConfig {
