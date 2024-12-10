@@ -1,4 +1,4 @@
-import { AxiosStatic } from "axios"
+import { AxiosInstance } from "axios"
 import { ConfigError } from "./error"
 import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } from "./types"
 
@@ -11,7 +11,7 @@ export type ApiConfigs = {
   version?:ApiVersion,
   sandbox?:boolean,
   disableCache?:boolean,
-  axios?:(axios:AxiosStatic) => AxiosStatic
+  axios?:(axios:AxiosInstance) => AxiosInstance
 }
 
 export type ValidatedApiConfigs = ApiConfigs & WithRequired<ApiConfigs,'version'|'sandbox'>
