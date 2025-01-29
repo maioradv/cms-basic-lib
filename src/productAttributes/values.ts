@@ -11,6 +11,10 @@ export default class ProductAttributeValues extends ApiModule implements GraphAp
     return this._call('get','/product-attribute-values',queryParams(args))
   } 
 
+  count(id:number) {
+    return this._call<number>('get',`/product-attribute-values/${id}/count`)
+  } 
+
   update(id:number,data:UpdateProductAttributeValueDto): Promise<ProductAttributeValue> {
     return this._call('patch',`/product-attribute-values/${id}`,data)
   }
