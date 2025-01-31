@@ -25,8 +25,10 @@ export type ProductAttributeValue = {
   updatedAt: Date;
 }
 
-export type CreateProductAttributeDto = OmitRequire<ProductAttribute,'id'|'createdAt'|'updatedAt'|'slug','name'>
-export type UpdateProductAttributeDto = Partial<CreateProductAttributeDto>
+export type CreateProductAttributeDto = OmitRequire<ProductAttribute,'id'|'createdAt'|'updatedAt'|'slug','name'> & {
+  values?:CreateProductAttributeValueDto[]
+}
+export type UpdateProductAttributeDto = Partial<Omit<CreateProductAttributeDto,'values'>>
 
 export type CreateProductAttributeValueDto = OmitRequire<ProductAttributeValue,'id'|'createdAt'|'updatedAt'|'productAttributeId','name'>
 export type UpdateProductAttributeValueDto = Partial<CreateProductAttributeValueDto>
