@@ -13,6 +13,14 @@ export default class Images extends ApiModule {
     })
   }
 
+  RNCreate(formData:any): Promise<Image> {
+    return this._call('post',`/images`,formData,{
+      headers:{
+        'Content-Type':'multipart/form-data'
+      }
+    })
+  }
+
   findAll(args:QueryImageDto = {}): Promise<PaginatedDto<Image>> {
     return this._call('get','/images',queryParams(args))
   } 
