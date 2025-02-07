@@ -5,8 +5,8 @@ export const RolesResolvers:Resolvers<['roles'],['removeRoles']> = {
   query:{
     roles:{
       name:'roles',
-      query: `query RoleList($limit: Int, $after: Int, $before: Int){
-        roles(limit: $limit, after: $after, before: $before){
+      query: `query RoleList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        roles(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

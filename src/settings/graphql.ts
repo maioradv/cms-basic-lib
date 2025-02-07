@@ -5,8 +5,8 @@ export const SettingsResolvers:Resolvers<['settings'],['removeSettings']> = {
   query:{
     settings:{
       name:'settings',
-      query: `query SettingList($limit: Int, $after: Int, $before: Int){
-        settings(limit: $limit, after: $after, before: $before){
+      query: `query SettingList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        settings(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

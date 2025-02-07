@@ -5,8 +5,8 @@ export const ProductAttributesResolvers:Resolvers<['productAttributes'],['remove
   query:{
     productAttributes:{
       name:'productAttributes',
-      query: `query ProductAttributeList($limit: Int, $after: Int, $before: Int){
-        productAttributes(limit: $limit, after: $after, before: $before){
+      query: `query ProductAttributeList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        productAttributes(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id
@@ -58,8 +58,8 @@ export const ProductAttributeValuesResolvers:Resolvers<['productAttributeValues'
   query:{
     productAttributeValues:{
       name:'productAttributeValues',
-      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int, $attributeSlug: String, $published: Boolean){
-        productAttributeValues(limit: $limit, after: $after, before: $before, attributeSlug: $attributeSlug, published: $published){
+      query: `query ProductAttributeValueList($limit: Int, $after: Int, $before: Int, $attributeSlug: String, $published: Boolean $sorting: String){
+        productAttributeValues(limit: $limit, after: $after, before: $before, attributeSlug: $attributeSlug, published: $published, sorting: $sorting){
           edges {
             node {
               id

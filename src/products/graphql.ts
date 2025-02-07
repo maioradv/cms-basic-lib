@@ -7,8 +7,8 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateM
   query:{
     products:{
       name:'products',
-      query: `query ProductList($limit: Int, $after: Int, $before: Int, $collectionId: Int){
-        products(limit: $limit, after: $after, before: $before, collectionId: $collectionId){
+      query: `query ProductList($limit: Int, $after: Int, $before: Int, $collectionId: Int, $sorting: String){
+        products(limit: $limit, after: $after, before: $before, collectionId: $collectionId, sorting: $sorting){
           edges {
             node {
               id

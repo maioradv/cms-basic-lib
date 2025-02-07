@@ -8,8 +8,8 @@ export const CollectionsResolvers:Resolvers<['collections'],['updateManyCollecti
   query:{
     collections:{
       name:'collections',
-      query: `query CollectionList($limit: Int, $after: Int, $before: Int){
-        collections(limit: $limit, after: $after, before: $before){
+      query: `query CollectionList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        collections(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

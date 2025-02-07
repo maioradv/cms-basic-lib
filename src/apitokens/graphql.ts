@@ -5,8 +5,8 @@ export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens']> = {
   query:{
     apiTokens:{
       name:'apiTokens',
-      query: `query ApiTokenList($limit: Int, $after: Int, $before: Int){
-        apiTokens(limit: $limit, after: $after, before: $before){
+      query: `query ApiTokenList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        apiTokens(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

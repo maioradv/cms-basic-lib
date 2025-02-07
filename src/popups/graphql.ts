@@ -5,8 +5,8 @@ export const PopupsResolvers:Resolvers<['popups'],['removePopups']> = {
   query:{
     popups:{
       name:'popups',
-      query: `query PopupList($limit: Int, $after: Int, $before: Int){
-        popups(limit: $limit, after: $after, before: $before){
+      query: `query PopupList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        popups(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

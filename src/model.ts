@@ -59,4 +59,4 @@ export interface GraphApiModuleI {
   removeMany:(id:number|number[]) => Promise<unknown>,
 }
 
-type CallMethod = 'get' | 'post' | 'patch' | 'delete'
+type CallMethod = 'get' | 'post' | 'patch' | 'delete' | 'put'

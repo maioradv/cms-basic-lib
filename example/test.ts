@@ -45,11 +45,6 @@ async function example() {
       }
     ]
   })*/
-  api.collections.findAll({
-    where:{
-      parentId:3
-    }
-  }).then(v => console.log(v))
 }
 
 example()

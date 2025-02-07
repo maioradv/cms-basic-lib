@@ -5,8 +5,8 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
   query:{
     configs:{
       name:'configs',
-      query: `query ConfigList($limit: Int, $after: Int, $before: Int){
-        configs(limit: $limit, after: $after, before: $before){
+      query: `query ConfigList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        configs(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id

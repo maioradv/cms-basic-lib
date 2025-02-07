@@ -28,6 +28,7 @@ export type ProductVariant = {
   fullPrice: number|null;
   productId: number;
   published: boolean;
+  position:number|null;
   createdAt: Date;
   updatedAt: Date;
 }

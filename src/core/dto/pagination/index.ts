@@ -24,7 +24,8 @@ export function pagination(args:PaginatedQueryDto): Record<string,any> {
 export type PaginatedGQLQueryDto = {
   after?:number,
   before?:number,
-  limit?:number
+  limit?:number,
+  sorting?:'asc'|'desc'
 }
 
 export type PaginatedGQLMetaDto = {

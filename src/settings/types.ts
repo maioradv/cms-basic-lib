@@ -16,6 +16,7 @@ export type Setting = {
 
 export type CreateSettingDto = OmitRequire<Setting,'id'|'createdAt'|'updatedAt','name'|'value'>
 export type UpdateSettingDto = Partial<CreateSettingDto>
+export type PutSettingDto = CreateSettingDto
 
 export type SortingSettingDto = SortingParamsDto<{
   name?:Sorting,

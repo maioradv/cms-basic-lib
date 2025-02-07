@@ -3,11 +3,15 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { QuerySettingGQLDto, SettingsResolvers } from "./graphql";
-import { CreateSettingDto, QuerySettingDto, Setting, UpdateSettingDto } from "./types";
+import { CreateSettingDto, PutSettingDto, QuerySettingDto, Setting, UpdateSettingDto } from "./types";
 
 export default class Settings extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateSettingDto): Promise<Setting> {
     return this._call('post','/settings',args)
+  }
+
+  put(args:PutSettingDto): Promise<Setting> {
+    return this._call('put','/settings',args)
   }
 
   findAll(args:QuerySettingDto = {}): Promise<PaginatedDto<Setting>> {

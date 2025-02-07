@@ -5,8 +5,8 @@ export const ImagesResolvers:Resolvers<['images'],[]> = {
   query:{
     images:{
       name:'images',
-      query: `query ImageList($limit: Int, $after: Int, $before: Int){
-        images(limit: $limit, after: $after, before: $before){
+      query: `query ImageList($limit: Int, $after: Int, $before: Int, $sorting: String){
+        images(limit: $limit, after: $after, before: $before, sorting: $sorting){
           edges {
             node {
               id
