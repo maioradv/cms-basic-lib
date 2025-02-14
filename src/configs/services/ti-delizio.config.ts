@@ -12,6 +12,7 @@ export interface TiDelizioConfig extends ServiceConfig {
   allowLocalization?:boolean;
   allowProductVideo?:boolean;
   allowPopup?:boolean;
+  allowCustomTheme?:boolean;
   plan?:TiDelizioPlan;
   qrLinkRedirect?:string;
   maxMenuCollectionNumber?:number;

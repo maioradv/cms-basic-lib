@@ -4,11 +4,15 @@ import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ConfigsResolvers, QueryConfigGQLDto } from "./graphql";
 import { TiDelizioConfig, TiDelizioPlan } from "./services/ti-delizio.config";
-import { Config, CreateConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
+import { Config, CreateConfigDto, PutConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
 
 export default class Configs extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateConfigDto): Promise<Config> {
     return this._call('post','/configs',args)
+  }
+
+  put(args:PutConfigDto): Promise<Config> {
+    return this._call('put','/configs',args)
   }
 
   findAll(args:QueryConfigDto= {}): Promise<PaginatedDto<Config>> {

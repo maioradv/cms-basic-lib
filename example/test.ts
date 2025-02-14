@@ -1,5 +1,5 @@
 import { createReadStream } from "fs";
-import { maiorCmsApiClient, ApiVersion, PopupModal, PopupTarget, PopupTriggerRule } from "../src";
+import { maiorCmsApiClient, ApiVersion, PopupModal, PopupTarget, PopupTriggerRule, TiDelizioPlan } from "../src";
 import { join } from "path";
 
 async function example() {
@@ -9,7 +9,7 @@ async function example() {
     host:'localhost:3001',
     version:ApiVersion.July24,
     credentials:{
-      apiToken:'9cc62cbe-73ba-4450-a84c-4f2b55e0fd2c'
+      apiToken:'9cf4e869-dd35-4857-9480-10ac40973c26'
     }
   })
   await api.auth()
@@ -45,6 +45,7 @@ async function example() {
       }
     ]
   })*/
+  api.collections.count(2).then(v => console.log(v))
 }
 
 example()

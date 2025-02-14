@@ -15,6 +15,7 @@ export type Config = {
 }
 
 export type CreateConfigDto = OmitRequire<Config,'id'|'createdAt'|'updatedAt','name'|'value'>
+export type PutConfigDto = CreateConfigDto
 export type UpdateConfigDto = Partial<CreateConfigDto>
 
 export type SortingConfigDto = SortingParamsDto<{

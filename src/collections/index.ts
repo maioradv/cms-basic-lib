@@ -17,6 +17,10 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._call('get','/collections',queryParams(args))
   } 
 
+  count(id:number) {
+    return this._call<number>('get',`/collections/${id}/count`)
+  } 
+
   findOne(id:number): Promise<FindOneCollectionDto> {
     return this._call('get',`/collections/${id}`)
   }

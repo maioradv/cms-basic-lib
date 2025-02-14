@@ -105,6 +105,7 @@ export type ClausesProductDto = WhereClausesDto<{
   collectionId?:NumberClause,
   attributes?:NumberClause,
   published?:BooleanClause,
+  noCollections?:BooleanClause
 }>
 
 export type QueryProductDto = QueryParamsDto<SortingProductDto,ClausesProductDto>
