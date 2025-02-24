@@ -24,6 +24,7 @@ export class MaiorCmsApiClient implements ClientApiI
 {
   protected client:Axios;
   protected configApi:ValidatedApiConfigs;
+  protected accessToken:string;
   authentication:Auth;
   apiTokens:ApiTokens;
   collections:Collections;
@@ -75,17 +76,24 @@ export class MaiorCmsApiClient implements ClientApiI
 
   _setAccessToken(accessToken:string) {
     this.client.defaults.headers.common[ApiHeader.Authorization] = `Bearer ${accessToken}`
+    this.accessToken = accessToken
+  }
+
+  _getAccessToken() {
+    return this.accessToken
   }
 
   async auth(): Promise<AccessTokenDto> {
     if(!this.configApi.credentials) throw new AuthError('Missing credentials')
     const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.jwt(this.configApi.credentials.accessToken)
+    this.accessToken = access.access_token
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }
 
   async jwt(accessToken:string): Promise<AccessTokenDto> {
     const access = await this.authentication.jwt(accessToken)
+    this.accessToken = access.access_token
     this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
     return access
   }

@@ -1,4 +1,4 @@
-import { createReadStream } from "fs";
+import { createReadStream, writeFile } from "fs";
 import { maiorCmsApiClient, ApiVersion, PopupModal, PopupTarget, PopupTriggerRule, TiDelizioPlan } from "../src";
 import { join } from "path";
 
@@ -45,7 +45,9 @@ async function example() {
       }
     ]
   })*/
-  api.collections.count(2).then(v => console.log(v))
+  //api.collections.count(2).then(v => console.log(v))
+  //api.io.downloadPdf().then(v => writeFile(join(__dirname,'test.pdf'),v,(err) => console.log(err)) )
+  //api.images.findAll().then(({data,meta}) => console.log(data))
 }
 
 example()
