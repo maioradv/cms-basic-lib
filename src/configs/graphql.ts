@@ -45,6 +45,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           allowLocalization
           allowPopup
           allowProductVideo
+          allowCustomTheme
           dashboardId
           maxMenuCollectionNumber
           maxProductImageNumber
