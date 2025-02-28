@@ -63,12 +63,14 @@ export type CreateProductCollectionDto = OmitRequire<ProductCollection,'createdA
 export type CreateProductDto = OmitRequire<Product,'id'|'createdAt'|'updatedAt'|'slug','title'> & {
   attributes?:number[],
   collections?:number[],
+  images?:number[],
   variants?:CreateProductVariantDto[]
 }
 export type UpdateProductDto = Partial<CreateProductDto> & {
   removeAttributes?:number[],
   removeVariants?:number[],
-  removeCollections?:number[]
+  removeCollections?:number[],
+  removeImages?:number[]
 }
 
 export type CreateProductImageDto = OmitRequire<ProductImage,'productId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
