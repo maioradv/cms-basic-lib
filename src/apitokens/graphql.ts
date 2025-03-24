@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens']> = {
+export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens','syncPermissionsApiTokens']> = {
   query:{
     apiTokens:{
       name:'apiTokens',
@@ -41,6 +41,20 @@ export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens']> = {
         }
       }`,
     },   
+    syncPermissionsApiTokens:{
+      name:'syncPermissionsApiTokens',
+      query: `mutation ApiTokenSyncPermissions {
+        syncPermissionsApiTokens {
+          id
+          name
+          uuid
+          permissions
+          readOnly
+          createdAt
+          updatedAt
+        }
+      }`,
+    },  
   }
 }
 

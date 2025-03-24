@@ -35,4 +35,8 @@ export default class Roles extends ApiModule implements RestApiModuleI, GraphApi
       id
     })
   }
+
+  syncPermissions(): Promise<Role[]> {
+    return this._graphql(RolesResolvers.mutation.syncPermissionsRoles)
+  }
 }

@@ -35,4 +35,8 @@ export default class ApiTokens extends ApiModule implements RestApiModuleI, Grap
       id
     })
   }
+
+  syncPermissions(): Promise<ApiToken[]> {
+    return this._graphql(ApiTokensResolvers.mutation.syncPermissionsApiTokens)
+  }
 }

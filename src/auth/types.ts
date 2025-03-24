@@ -64,5 +64,7 @@ export enum Permission {
   write_io_operations = 'write_io_operations',
   read_io_operations = 'read_io_operations',
   read_settings = 'read_settings',
-  write_settings = 'write_settings'
+  write_settings = 'write_settings',
+  read_bundles = 'read_bundles',
+  write_bundles = 'write_bundles'
 }

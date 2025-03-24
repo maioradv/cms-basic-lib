@@ -12,6 +12,7 @@ export type Product = {
   title: string;
   subtitle: string|null;
   description: string|null;
+  externalId: string|null;
   tags: string[];
   translations: Translation[];
   metafields: Metafield[];
@@ -69,8 +70,24 @@ export type CreateProductDto = OmitRequire<Product,'id'|'createdAt'|'updatedAt'|
 export type UpdateProductDto = Partial<CreateProductDto> & {
   removeAttributes?:number[],
   removeVariants?:number[],
+  removeAllVariants?:boolean,
   removeCollections?:number[],
   removeImages?:number[]
+}
+export type PutProductDto = OmitRequire<Product,'createdAt'|'updatedAt'|'slug','title'> & {
+  attributes?:number[],
+  collections?:number[],
+  images?:number[],
+  variants?:CreateProductVariantDto[],
+  removeAttributes?:number[],
+  removeVariants?:number[],
+  removeAllVariants?:boolean,
+  removeCollections?:number[],
+  removeImages?:number[]
+}
+export type PutProductBatchDto = {
+  /** List has a limit of 300 elements */
+  products:PutProductDto[]
 }
 
 export type CreateProductImageDto = OmitRequire<ProductImage,'productId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto

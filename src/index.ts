@@ -18,6 +18,7 @@ export * from './productAttributes/types'
 export * from './products/types'
 export * from './roles/types'
 export * from './settings/types'
+export * from './bundles/types'
 
 export * from './core/dto/pagination'
 

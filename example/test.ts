@@ -1,16 +1,18 @@
 import { createReadStream, writeFile } from "fs";
 import { maiorCmsApiClient, ApiVersion, PopupModal, PopupTarget, PopupTriggerRule, TiDelizioPlan } from "../src";
 import { join } from "path";
+import Credentials from './credentials.json'
 
 async function example() {
   const api = maiorCmsApiClient({
-    sandbox:true,
+    //sandbox:true,
     disableCache:true,
-    host:'localhost:3001',
+    //host:'localhost:3001',
     version:ApiVersion.July24,
-    credentials:{
+    /*credentials:{
       apiToken:'9cf4e869-dd35-4857-9480-10ac40973c26'
-    }
+    },*/
+    ...Credentials
   })
   await api.auth()
   const file = createReadStream(join(__dirname,'pizza1.jpg'))
@@ -48,6 +50,35 @@ async function example() {
   //api.collections.count(2).then(v => console.log(v))
   //api.io.downloadPdf().then(v => writeFile(join(__dirname,'test.pdf'),v,(err) => console.log(err)) )
   //api.images.findAll().then(({data,meta}) => console.log(data))
+  /*api.bundles.create({
+    title:'prova',
+    collections:[195],
+    description:'test di est',
+    products:[180,181,182],
+    variants:[
+      {
+        price:40
+      }
+    ]
+  })*/
+  api.bundles.findOne(3).then(v => console.log(v))
+  /*api.bundles.updateBundleProducts({
+    bundleId:3,
+    updateList:[
+      {
+        productId:180,
+        position:3
+      },
+      {
+        productId:181,
+        position:2
+      },
+      {
+        productId:182,
+        position:1
+      }
+    ]
+  }).then(v => console.log(v))*/
 }
 
 example()

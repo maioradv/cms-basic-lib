@@ -1,3 +1,4 @@
+import { Bundle, BundleCollection } from "../bundles/types";
 import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
@@ -71,6 +72,16 @@ export type FindAllCollectionProductsDto = WithRelation<ProductCollection,'Produ
   ProductImage:WithRelation<ProductImage,'Image',Image>[],
 }>>
 export type QueryCollectionProductsDto = Omit<QueryParamsDto<
+    SortingParamsDto<{}>,
+    WhereClausesDto<{
+      includeAttributes?:NumberClause,
+      excludeAttributes?:NumberClause,
+      search?:StringClause,
+      published?:BooleanClause
+    }>
+  >,'sorting'>
+export type FindAllCollectionBundlesDto = WithRelation<BundleCollection,'Bundle',Bundle>
+export type QueryCollectionBundlesDto = Omit<QueryParamsDto<
     SortingParamsDto<{}>,
     WhereClausesDto<{
       includeAttributes?:NumberClause,

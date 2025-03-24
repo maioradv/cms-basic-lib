@@ -1,7 +1,7 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const RolesResolvers:Resolvers<['roles'],['removeRoles']> = {
+export const RolesResolvers:Resolvers<['roles'],['removeRoles','syncPermissionsRoles']> = {
   query:{
     roles:{
       name:'roles',
@@ -46,6 +46,25 @@ export const RolesResolvers:Resolvers<['roles'],['removeRoles']> = {
         }
       }`,
     },   
+    syncPermissionsRoles:{
+      name:'syncPermissionsRoles',
+      query: `mutation RoleSyncPermissions {
+        syncPermissionsRoles {
+          id
+          name
+          description
+          permissions
+          readOnly
+          translations {
+            key
+            locale
+            value
+          }
+          createdAt
+          updatedAt
+        }
+      }`,
+    },  
   }
 }
 

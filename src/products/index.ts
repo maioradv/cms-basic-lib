@@ -4,13 +4,21 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { Image } from "../images/types";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
-import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
+import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, PutProductBatchDto, PutProductDto, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
 import { WithRelation } from "../types";
 import { ArgsUpdateProductAttributesDto, FindAllProductGQLDto, ProductsResolvers, QueryProductGQLDto } from "./graphql";
 
 export default class Products extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateProductDto): Promise<Product> {
     return this._call('post','/products',args)
+  }
+
+  put(args:PutProductDto): Promise<Product> {
+    return this._call('put','/products',args)
+  }
+
+  putBatch(args:PutProductBatchDto): Promise<void> {
+    return this._call('put','/products/batch',args)
   }
 
   findAll(args:QueryProductDto = {}): Promise<PaginatedDto<FindAllProductDto>> {

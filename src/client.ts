@@ -19,6 +19,8 @@ import ProductAttributeValues from "./productAttributes/values";
 import Products from "./products";
 import ProductVariants from "./products/variants";
 import Settings from "./settings";
+import Bundles from "./bundles";
+import BundleVariants from "./bundles/variants";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -40,6 +42,8 @@ export class MaiorCmsApiClient implements ClientApiI
   productVariants:ProductVariants;
   roles:Roles;
   settings:Settings;
+  bundles:Bundles;
+  bundleVariants:BundleVariants;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -72,6 +76,8 @@ export class MaiorCmsApiClient implements ClientApiI
     this.productVariants = new ProductVariants(this.client)
     this.roles = new Roles(this.client)
     this.settings = new Settings(this.client)
+    this.bundles = new Bundles(this.client)
+    this.bundleVariants = new BundleVariants(this.client)
   }
 
   _setAccessToken(accessToken:string) {

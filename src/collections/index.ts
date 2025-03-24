@@ -1,3 +1,4 @@
+import { BundleCollection } from "../bundles/types";
 import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
 import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
@@ -5,8 +6,8 @@ import { Image } from "../images/types";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ProductCollection } from "../products/types";
 import { WithRelation } from "../types";
-import { ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
-import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindOneCollectionDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
+import { ArgsUpdateBundlesDto, ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
+import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionBundlesDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindOneCollectionDto, QueryCollectionBundlesDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
 
 export default class Collections extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateCollectionDto): Promise<Collection> {
@@ -49,6 +50,10 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._graphql(CollectionsResolvers.mutation.updateCollectionProducts,args)
   }
 
+  updateBundles(args:ArgsUpdateBundlesDto): Promise<BundleCollection[]> {
+    return this._graphql(CollectionsResolvers.mutation.updateCollectionBundles,args)
+  }
+
   removeMany(id:number|number[]): Promise<RemoveGQL> {
     return this._graphql(CollectionsResolvers.mutation.removeCollections,{
       id
@@ -89,6 +94,10 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
 
   findAllProducts(collectionId:number,args:QueryCollectionProductsDto = {}): Promise<PaginatedDto<FindAllCollectionProductsDto>> {
     return this._call('get',`/collections/${collectionId}/products`,queryParams(args))
+  } 
+
+  findAllBundles(collectionId:number,args:QueryCollectionBundlesDto = {}): Promise<PaginatedDto<FindAllCollectionBundlesDto>> {
+    return this._call('get',`/collections/${collectionId}/bundles`,queryParams(args))
   } 
 
   removeProduct(collectionId:number,productId:number): Promise<ProductCollection> {

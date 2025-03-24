@@ -22,6 +22,7 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateM
             subtitle
             description
             tags
+            externalId
             ProductVariant {
               id
               description
