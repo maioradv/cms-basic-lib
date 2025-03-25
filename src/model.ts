@@ -36,6 +36,10 @@ export class ApiModule {
       return response.data.data[resolver.name] as Res
     }
     catch(error:any) {
+      if(error?.response?.data?.errors) {
+        const GQLError = new Error((error.response.data.errors as Array<any>).map(e => e.message).join(', '))
+        throw new GraphApiError(GQLError)
+      }
       throw new GraphApiError(error)
     }
   }

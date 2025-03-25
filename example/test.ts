@@ -61,7 +61,7 @@ async function example() {
       }
     ]
   })*/
-  api.bundles.findOne(3).then(v => console.log(v))
+  api.bundles.list().then(v => console.log(v))
   /*api.bundles.updateBundleProducts({
     bundleId:3,
     updateList:[

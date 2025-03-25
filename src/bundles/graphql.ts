@@ -32,7 +32,7 @@ export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateMany
               }
               price
               fullPrice
-              productId
+              bundleId
               published
               createdAt
               updatedAt
