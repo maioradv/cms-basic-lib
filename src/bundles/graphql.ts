@@ -1,6 +1,6 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
-import { OmitRequire, WithRelation } from "../types";
+import { OmitRequire, WithRelations } from "../types";
 import { Bundle, BundleProduct, BundleVariant } from "./types";
 
 export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateManyBundleProducts']> = {
@@ -22,6 +22,21 @@ export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateMany
             subtitle
             description
             tags
+            BundleVariant {
+              id
+              description
+              translations {
+                key
+                locale
+                value
+              }
+              price
+              fullPrice
+              productId
+              published
+              createdAt
+              updatedAt
+            }
             translations {
               key
               locale
@@ -79,4 +94,6 @@ export type QueryBundleGQLDto = PaginatedGQLQueryDto & {
   collectionId?:number
 }
 
-export type FindAllBundleGQLDto = Bundle
+export type FindAllBundleGQLDto = WithRelations<Bundle,{
+  BundleVariant:BundleVariant[],
+}>
