@@ -1,4 +1,4 @@
-import { Bundle, BundleCollection, BundleVariant } from "../bundles/types";
+import { Bundle, BundleCollection, BundleProduct, BundleVariant } from "../bundles/types";
 import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
@@ -82,6 +82,7 @@ export type QueryCollectionProductsDto = Omit<QueryParamsDto<
   >,'sorting'>
 export type FindAllCollectionBundlesDto = WithRelation<BundleCollection,'Bundle',WithRelations<Bundle,{
   BundleVariant:BundleVariant[],
+  BundleProduct:BundleProduct[]
 }>>
 export type QueryCollectionBundlesDto = Omit<QueryParamsDto<
     SortingParamsDto<{}>,
