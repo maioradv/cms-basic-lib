@@ -37,6 +37,13 @@ export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateMany
               createdAt
               updatedAt
             }
+            BundleProduct {
+              bundleId
+              productId
+              position
+              createdAt
+              updatedAt
+            }
             translations {
               key
               locale
@@ -96,4 +103,5 @@ export type QueryBundleGQLDto = PaginatedGQLQueryDto & {
 
 export type FindAllBundleGQLDto = WithRelations<Bundle,{
   BundleVariant:BundleVariant[],
+  BundleProduct:BundleProduct[]
 }>

@@ -68,6 +68,7 @@ export type UpdateBundleVariantDto = Partial<CreateBundleVariantDto>
 
 export type FindAllBundleDto = WithRelations<Bundle,{
   BundleVariant:BundleVariant[],
+  BundleProduct:BundleProduct[],
 }>
 export type FindOneBundleDto = WithRelations<Bundle,{
   BundleProduct:WithRelation<BundleProduct,'Product',Product>[],
