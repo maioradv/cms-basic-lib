@@ -11,7 +11,8 @@ export enum PopupTarget {
 }
 
 export enum PopupModal {
-  standard = 'standard'
+  standard = 'standard',
+  bgimage = 'bgimage'
 }
 
 export enum PopupTriggerRule {
