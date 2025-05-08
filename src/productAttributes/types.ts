@@ -56,7 +56,9 @@ export type ClausesProductAttributeValueDto = WhereClausesDto<{
   name?:StringClause,
   published?:BooleanClause,
   attributeSlug?:StringClause[],
-  productAttributeId?:NumberClause
+  productAttributeId?:NumberClause,
+  collections?:NumberClause,
+  bundles?:NumberClause
 }>
 
 export type QueryProductAttributeValueDto = QueryParamsDto<SortingProductAttributeValueDto,ClausesProductAttributeValueDto>
