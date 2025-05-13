@@ -7,6 +7,9 @@ export enum TiDelizioPlan {
 }
 
 export interface TiDelizioConfig extends ServiceConfig {
+  allowGoogleAnalytics?:boolean;
+  allowMetaPixel?:boolean;
+  allowGoogleTagManager?:boolean;
   allowAdvancedMenu?:boolean;
   allowDiscounts?:boolean;
   allowLocalization?:boolean;
