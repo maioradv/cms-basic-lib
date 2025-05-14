@@ -39,6 +39,9 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
       name:'TiDelizioConfig',
       query:`query {
         TiDelizioConfig {
+          allowGoogleAnalytics
+          allowMetaPixel
+          allowGoogleTagManager
           accountsApiToken
           allowAdvancedMenu
           allowDiscounts
