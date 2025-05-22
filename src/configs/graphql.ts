@@ -17,6 +17,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
             id
             name
             value
+            customValue
             description
             translations {
               key
@@ -53,6 +54,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber
+          maxAdditionalLanguages
           plan
           qrLinkRedirect
         }
@@ -75,6 +77,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           id
           name
           value
+          customValue
           description
           translations {
             key

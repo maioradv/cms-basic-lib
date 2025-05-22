@@ -21,4 +21,5 @@ export interface TiDelizioConfig extends ServiceConfig {
   maxMenuCollectionNumber?:number;
   maxProductsCollectionNumber?:number;
   maxProductImageNumber?:number
+  maxAdditionalLanguages?:number
 }

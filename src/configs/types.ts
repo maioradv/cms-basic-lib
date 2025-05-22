@@ -8,6 +8,7 @@ export type Config = {
   id: number;
   name: string;
   value: string;
+  customValue: string|null;
   description: string|null;
   translations: Translation[];
   createdAt: Date;
