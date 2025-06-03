@@ -12,6 +12,7 @@ export interface TiDelizioConfig extends ServiceConfig {
   allowGoogleTagManager?:boolean;
   allowAdvancedMenu?:boolean;
   allowDiscounts?:boolean;
+  allowCustomProductModal?:boolean;
   allowLocalization?:boolean;
   allowProductVideo?:boolean;
   allowPopup?:boolean;
