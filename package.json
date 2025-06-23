@@ -1,6 +1,6 @@
 {
   "name": "@maioradv/cms-basic-lib",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "JS lib for Maior CMS Basic Api",
   "repository": "https://github.com/maioradv/cms-basic-lib.git",
   "author": "Maior ADV Srl",
@@ -16,12 +16,12 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "^1.7.2"
+    "axios": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.8.3"
   },
   "keywords": [
     "typescript",
