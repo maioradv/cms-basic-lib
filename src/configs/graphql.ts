@@ -46,6 +46,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           accountsApiToken
           allowAdvancedMenu
           allowDiscounts
+          allowBundles
           allowLocalization
           allowPopup
           allowProductVideo
