@@ -20,6 +20,7 @@ export const LanguagesResolvers:Resolvers<['languages'],['removeLanguages']> = {
             iso
             locale
             published
+            default
             translations {
               key
               locale

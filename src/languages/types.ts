@@ -10,6 +10,7 @@ export type Language = {
   iso: string;
   locale: string;
   published: boolean;
+  default: boolean;
   translations: Translation[];
   createdAt: Date;
   updatedAt: Date;
@@ -29,6 +30,7 @@ export type ClausesLanguageDto = WhereClausesDto<{
   locale?:StringClause,
   active?:BooleanClause,
   published?:BooleanClause,
+  default?:BooleanClause,
 }>
 
 export type QueryLanguageDto = QueryParamsDto<SortingLanguageDto,ClausesLanguageDto>
