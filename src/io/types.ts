@@ -14,3 +14,7 @@ export type CreatePdfDto = {
   email:string,
   displayName:string
 }
+
+export type InitSeedingDto = {
+  locale:string,
+}

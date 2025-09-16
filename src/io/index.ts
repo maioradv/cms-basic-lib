@@ -1,5 +1,5 @@
 import { ApiModule } from "../model";
-import { CreateImportDto, CreatePdfDto } from "./types";
+import { CreateImportDto, CreatePdfDto, InitSeedingDto } from "./types";
 
 export default class IO extends ApiModule {
   importExcel(args:CreateImportDto): Promise<void> {
@@ -38,5 +38,9 @@ export default class IO extends ApiModule {
     return this._call<Buffer>('get','/pdf',undefined,{
       responseType:'arraybuffer'
     })
+  }
+
+  seeding(args:InitSeedingDto): Promise<void> {
+    return this._call('post','/seeding',args)
   }
 }
