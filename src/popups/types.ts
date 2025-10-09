@@ -5,6 +5,7 @@ import { CreateImageDto, Image } from "../images/types";
 import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export enum PopupTarget {
+  all = 'all',
   menu = 'menu',
   menuDetail = 'menuDetail',
   collectionDetail = 'collectionDetail'
