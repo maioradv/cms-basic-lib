@@ -2,12 +2,12 @@ import { ApiModule } from "../model";
 import { AccessTokenDto, Jwt } from "./types";
 
 export default class Auth extends ApiModule {
-  jwt(accessToken:string): Promise<AccessTokenDto> {
-    return this._call('post',`/auth/jwt/${accessToken}`)
+  jwt(token:string): Promise<AccessTokenDto> {
+    return this._call('post',`/auth/jwt`,{token})
   }
 
-  token(apiToken:string): Promise<AccessTokenDto> {
-    return this._call('post',`/auth/token/${apiToken}`)
+  token(token:string): Promise<AccessTokenDto> {
+    return this._call('post',`/auth/token`,{token})
   }
 
   me(): Promise<Jwt> {
