@@ -22,6 +22,7 @@ export type SortingApiTokenDto = SortingParamsDto<{
 
 export type ClausesApiTokenDto = WhereClausesDto<{
   name?:StringClause,
+  readOnly?:BooleanClause,
 }>
 
 export type QueryApiTokenDto = QueryParamsDto<SortingApiTokenDto,ClausesApiTokenDto>
