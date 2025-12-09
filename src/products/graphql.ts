@@ -25,10 +25,16 @@ export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateM
             externalId
             ProductVariant {
               id
+              title
+              subtitle
               description
               translations {
                 key
                 locale
+                value
+              }
+              metafields {
+                key
                 value
               }
               price

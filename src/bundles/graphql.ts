@@ -24,10 +24,16 @@ export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateMany
             tags
             BundleVariant {
               id
+              title
+              subtitle
               description
               translations {
                 key
                 locale
+                value
+              }
+              metafields {
+                key
                 value
               }
               price

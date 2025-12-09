@@ -23,8 +23,11 @@ export type Bundle = {
 
 export type BundleVariant = {
   id: number;
+  title: string|null;
+  subtitle: string|null;
   description: string|null;
   translations: Translation[];
+  metafields: Metafield[];
   price: number|null;
   fullPrice: number|null;
   bundleId: number;
