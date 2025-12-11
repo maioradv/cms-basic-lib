@@ -1,5 +1,5 @@
 import { createReadStream, writeFile } from "fs";
-import { maiorCmsApiClient, ApiVersion } from "../src";
+import { maiorCmsApiClient, ApiVersion, Gid, toGlobalId } from "../src";
 import { join } from "path";
 import Credentials from './credentials.json'
 
