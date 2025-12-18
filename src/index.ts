@@ -23,7 +23,7 @@ export * from './gid'
 
 export * from './core/dto/pagination'
 
-export { TiDelizioPlan, TiDelizioConfig } from './configs/services/ti-delizio.config'
+export { TiDelizioPlan, TiDelizioConfig } from './configs/services/tidelizio.config'
 
 export function maiorCmsApiClient(opt:MaiorCmsApiConfigs): MaiorCmsApiClient {
   return new MaiorCmsApiClient(opt)

@@ -10,6 +10,7 @@ async function example() {
     ...Credentials
   })
   await api.auth()
+  api.configs.TiDelizioConfig().then(config => console.log(config))
   const file = createReadStream(join(__dirname,'pizza1.jpg'))
   /*await api.popups.createImage(9,{
     file

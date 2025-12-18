@@ -3,7 +3,7 @@ import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
 import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
 import { ConfigsResolvers, QueryConfigGQLDto } from "./graphql";
-import { TiDelizioConfig, TiDelizioPlan } from "./services/ti-delizio.config";
+import { TiDelizioConfig, TiDelizioPlan } from "./services/tidelizio.config";
 import { Config, CreateConfigDto, PutConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
 
 export default class Configs extends ApiModule implements RestApiModuleI, GraphApiModuleI {

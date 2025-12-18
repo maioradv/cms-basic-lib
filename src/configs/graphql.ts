@@ -43,7 +43,6 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           allowGoogleAnalytics
           allowMetaPixel
           allowGoogleTagManager
-          accountsApiToken
           allowAdvancedMenu
           allowDiscounts
           allowBundles
@@ -52,7 +51,6 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           allowProductVideo
           allowCustomProductModal
           allowCustomTheme
-          dashboardId
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber
