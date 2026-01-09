@@ -66,5 +66,7 @@ export enum Permission {
   read_settings = 'read_settings',
   write_settings = 'write_settings',
   read_bundles = 'read_bundles',
-  write_bundles = 'write_bundles'
+  write_bundles = 'write_bundles',
+  read_linkcollections = 'read_linkcollections',
+  write_linkcollections = 'write_linkcollections',
 }
