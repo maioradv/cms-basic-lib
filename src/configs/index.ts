@@ -30,6 +30,14 @@ export default class Configs extends ApiModule implements RestApiModuleI, GraphA
   remove(id:number): Promise<Config> {
     return this._call('delete',`/configs/${id}`)
   }
+
+  findByName(name:string): Promise<Config> {
+    return this._call('get',`/configs/name/${name}`)
+  }
+
+  removeByName(name:string): Promise<Config> {
+    return this._call('delete',`/configs/name/${name}`)
+  }
   
   list(args:QueryConfigGQLDto = {}): Promise<PaginatedGQL<Config>> {
     return this._graphql(ConfigsResolvers.query.configs,args)

@@ -51,12 +51,12 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           allowProductVideo
           allowCustomProductModal
           allowCustomTheme
+          allowLinks
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber
           maxAdditionalLanguages
           plan
-          qrLinkRedirect
         }
       }`
     }

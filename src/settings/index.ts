@@ -29,6 +29,14 @@ export default class Settings extends ApiModule implements RestApiModuleI, Graph
   remove(id:number): Promise<Setting> {
     return this._call('delete',`/settings/${id}`)
   }
+
+  findByKey(namespace:string,name:string): Promise<Setting> {
+    return this._call('get',`/settings/${namespace}/${name}`)
+  }
+
+  removeByKey(namespace:string,name:string): Promise<Setting> {
+    return this._call('delete',`/settings/${namespace}/${name}`)
+  }
   
   list(args:QuerySettingGQLDto = {}): Promise<PaginatedGQL<Setting>> {
     return this._graphql(SettingsResolvers.query.settings,args)
