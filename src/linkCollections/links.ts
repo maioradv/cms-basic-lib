@@ -8,6 +8,10 @@ export default class Links extends ApiModule {
     return this._call('get','/links',queryParams(args))
   } 
 
+  findOne(id:number): Promise<Link> {
+    return this._call('get',`/links/${id}`)
+  }
+
   update(id:number,data:UpdateLinkDto): Promise<Link> {
     return this._call('patch',`/links/${id}`,data)
   }
