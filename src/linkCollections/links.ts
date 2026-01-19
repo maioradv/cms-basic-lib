@@ -1,14 +1,14 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
 import { ApiModule } from "../model";
-import { CreateLinkImageDto, FindAllLinkDto, FindAllLinkImageDto, Link, LinkImage, QueryLinkDto, UpdateLinkDto, UpdateLinkImageDto } from "./types";
+import { CreateLinkImageDto, FindAllLinkDto, FindAllLinkImageDto, FindOneLinkDto, Link, LinkImage, QueryLinkDto, UpdateLinkDto, UpdateLinkImageDto } from "./types";
 
 export default class Links extends ApiModule {
   findAll(args:QueryLinkDto = {}): Promise<PaginatedDto<FindAllLinkDto>> {
     return this._call('get','/links',queryParams(args))
   } 
 
-  findOne(id:number): Promise<Link> {
+  findOne(id:number): Promise<FindOneLinkDto> {
     return this._call('get',`/links/${id}`)
   }
 

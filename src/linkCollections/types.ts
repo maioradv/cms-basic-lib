@@ -82,6 +82,9 @@ export type FindOneLinkCollectionDto = WithRelations<LinkCollection,{
 export type FindAllLinkDto = WithRelations<Link,{
   LinkImage:WithRelation<LinkImage,'Image',Image>[],
 }>
+export type FindOneLinkDto = WithRelations<Link,{
+  LinkImage:WithRelation<LinkImage,'Image',Image>[],
+}>
 
 export type CreateLinkImageDto = OmitRequire<LinkImage,'linkId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdateLinkImageDto = Omit<CreateLinkImageDto,'file'>
