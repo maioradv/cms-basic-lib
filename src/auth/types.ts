@@ -69,4 +69,6 @@ export enum Permission {
   write_bundles = 'write_bundles',
   read_linkcollections = 'read_linkcollections',
   write_linkcollections = 'write_linkcollections',
+  read_reservations = 'read_reservations',
+  write_reservations = 'write_reservations',
 }

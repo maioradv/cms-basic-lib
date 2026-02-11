@@ -18,6 +18,7 @@ export interface TiDelizioConfig extends ServiceConfig {
   allowProductVideo?:boolean;
   allowPopup?:boolean;
   allowLinks?:boolean;
+  allowReservations?:boolean;
   allowCustomTheme?:boolean;
   plan?:TiDelizioPlan;
   maxMenuCollectionNumber?:number;

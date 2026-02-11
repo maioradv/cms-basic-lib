@@ -52,6 +52,7 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           allowCustomProductModal
           allowCustomTheme
           allowLinks
+          allowReservations
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber

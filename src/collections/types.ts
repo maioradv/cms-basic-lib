@@ -51,6 +51,7 @@ export type ClausesCollectionDto = WhereClausesDto<{
   productId?:NumberClause,
   published?:BooleanClause,
   hasParent?:BooleanClause,
+  hasImages?:BooleanClause,
   allowChildren?:BooleanClause,
 }>
 
