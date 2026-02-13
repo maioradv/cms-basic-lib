@@ -44,9 +44,6 @@ export enum Permission {
   write_productattributes = 'write_productattributes',
   read_productattributevalues = 'read_productattributevalues',
   write_productattributevalues = 'write_productattributevalues',
-  read_bulkoperations = 'read_bulkoperations',
-  write_bulkoperations = 'write_bulkoperations',
-  run_bulkoperations = 'run_bulkoperations',
   read_discounts = 'read_discounts',
   write_discounts = 'write_discounts',
   read_languages = 'read_languages',
@@ -71,4 +68,5 @@ export enum Permission {
   write_linkcollections = 'write_linkcollections',
   read_reservations = 'read_reservations',
   write_reservations = 'write_reservations',
+  push_reservations = 'push_reservations',
 }

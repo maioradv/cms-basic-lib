@@ -20,6 +20,7 @@ export * from './roles/types'
 export * from './settings/types'
 export * from './bundles/types'
 export * from './linkCollections/types'
+export * from './reservations/types'
 export * from './gid'
 
 export * from './core/dto/pagination'
