@@ -78,7 +78,8 @@ export type QueryCollectionProductsDto = Omit<QueryParamsDto<
       includeAttributes?:NumberClause,
       excludeAttributes?:NumberClause,
       search?:StringClause,
-      published?:BooleanClause
+      published?:BooleanClause,
+      hasImages?:BooleanClause
     }>
   >,'sorting'>
 export type FindAllCollectionBundlesDto = WithRelation<BundleCollection,'Bundle',WithRelations<Bundle,{
