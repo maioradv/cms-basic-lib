@@ -15,7 +15,9 @@ export enum ReservationStatus {
   confirmed = 'confirmed',
   cancelled = 'cancelled',
   completed = 'completed',
-  noShow = 'noShow'
+  noShow = 'noShow',
+  arrived = 'arrived',
+  partiallyArrived = 'partiallyArrived',
 }
 
 export type Reservation = {
