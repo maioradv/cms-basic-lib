@@ -22,6 +22,7 @@ export enum ReservationStatus {
 
 export type Reservation = {
   id: number;
+  token: string;
   source: ReservationSource|null;
   status: ReservationStatus;
   date: Date;
@@ -52,6 +53,7 @@ export type SortingReservationDto = SortingParamsDto<{
 
 export type ClausesReservationDto = WhereClausesDto<{
   search?:StringClause,
+  token?:StringClause,
   date?:DateClause,
   minDate?:DateClause,
   maxDate?:DateClause,
