@@ -37,9 +37,9 @@ export type Reservation = {
   updatedAt: Date;
 }
 
-export type CreateReservationDto = OmitRequire<Reservation,'id'|'createdAt'|'updatedAt','date'|'guestCount'|'name'|'phone'>
+export type CreateReservationDto = OmitRequire<Reservation,'id'|'createdAt'|'updatedAt'|'token','date'|'guestCount'|'name'|'phone'>
 export type UpdateReservationDto = Partial<CreateReservationDto>
-export type PushReservationDto = OmitRequire<Reservation,'id'|'createdAt'|'updatedAt'|'status','date'|'guestCount'|'name'|'phone'>
+export type PushReservationDto = OmitRequire<Reservation,'id'|'createdAt'|'updatedAt'|'status'|'token','date'|'guestCount'|'name'|'phone'>
 
 export type SortingReservationDto = SortingParamsDto<{
   name?:Sorting,
