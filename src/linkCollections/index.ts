@@ -12,6 +12,10 @@ export default class LinkCollections extends ApiModule implements RestApiModuleI
     return this._call('get','/link-collections',queryParams(args))
   } 
 
+  count(id:number) {
+    return this._call<number>('get',`/link-collections/${id}/count`)
+  } 
+
   findOne(id:number): Promise<FindOneLinkCollectionDto> {
     return this._call('get',`/link-collections/${id}`)
   }
