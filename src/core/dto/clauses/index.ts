@@ -30,7 +30,6 @@ export function where(args:ClausesDto): Record<string,any> {
       res[key] = args[key] instanceof Array ? (args[key] as Array<any>).join() : args[key]
     }
   });
-  console.log(res)
   return res;
 }
 
