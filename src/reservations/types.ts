@@ -1,4 +1,4 @@
-import { BooleanClause, DateClause, EnumClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, DateClause, EnumClause, NumberClause, ObjectClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { Metafield, OmitRequire, Translation } from "../types";
@@ -57,9 +57,10 @@ export type ClausesReservationDto = WhereClausesDto<{
   date?:DateClause,
   minDate?:DateClause,
   maxDate?:DateClause,
-  source?:EnumClause<ReservationSource>[],
-  status?:EnumClause<ReservationStatus>[],
-  guestCount?:NumberClause[],
+  source?:EnumClause<ReservationSource>,
+  status?:EnumClause<ReservationStatus>,
+  guestCount?:NumberClause,
+  metafields?:ObjectClause<Partial<Metafield>>
 }>
 
 export type QueryReservationDto = QueryParamsDto<SortingReservationDto,ClausesReservationDto>

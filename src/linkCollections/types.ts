@@ -1,5 +1,5 @@
 import { Bundle, BundleCollection, BundleProduct, BundleVariant } from "../bundles/types";
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
@@ -66,12 +66,16 @@ export type SortingLinkDto = SortingParamsDto<{
 export type ClausesLinkCollectionDto = WhereClausesDto<{
   search?:StringClause,
   published?:BooleanClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type ClausesLinkDto = WhereClausesDto<{
   search?:StringClause,
   linkCollectionId?:NumberClause,
   published?:BooleanClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryLinkCollectionDto = QueryParamsDto<SortingLinkCollectionDto,ClausesLinkCollectionDto>

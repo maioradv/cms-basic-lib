@@ -1,5 +1,5 @@
 import { Collection } from "../collections/types";
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
@@ -91,7 +91,9 @@ export type ClausesBundleDto = WhereClausesDto<{
   description?:StringClause,
   collectionId?:NumberClause,
   published?:BooleanClause,
-  noCollections?:BooleanClause
+  noCollections?:BooleanClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryBundleDto = QueryParamsDto<SortingBundleDto,ClausesBundleDto>

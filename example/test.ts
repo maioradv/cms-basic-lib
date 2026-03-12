@@ -1,5 +1,5 @@
 import { createReadStream, writeFile } from "fs";
-import { maiorCmsApiClient, ApiVersion, Gid, toGlobalId, ReservationSource } from "../src";
+import { maiorCmsApiClient, ApiVersion, Gid, toGlobalId, ReservationSource, ReservationStatus } from "../src";
 import { join } from "path";
 import Credentials from './credentials.json'
 
@@ -16,14 +16,31 @@ async function example() {
     file
   })*/
   //api.io.downloadPdf().then(v => writeFile(join(__dirname,'test.pdf'),v,(err) => console.log(err)) )
-  await api.reservations.push({
+  /*await api.reservations.push({
     date: new Date(),
     guestCount: 2,
     name: 'John',
     phone: '+393331234567',
-    source: ReservationSource.admin
-  })
-  api.reservations.findAll().then(res => console.log(res))
+    source: ReservationSource.admin,
+    metafields:[
+      {
+        key:'test',
+        value:'prova'
+      }
+    ]
+  })*/
+  api.products.findAll({
+    where:{
+      translations:[
+        {
+          key:'title'
+        },
+        {
+          key:'description'
+        }
+      ]
+    }
+  }).then(res => res.data.map(v => console.log(v.id,v.translations)))
 }
 
 example()

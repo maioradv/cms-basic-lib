@@ -25,7 +25,7 @@ export type SortingSettingDto = SortingParamsDto<{
 export type ClausesSettingDto = WhereClausesDto<{
   name?:StringClause,
   description?:StringClause,
-  namespace?:StringClause[]
+  namespace?:StringClause|StringClause[]
 }>
 
 export type QuerySettingDto = QueryParamsDto<SortingSettingDto,ClausesSettingDto>

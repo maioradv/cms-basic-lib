@@ -1,4 +1,4 @@
-import { BooleanClause, EnumClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, EnumClause, ObjectClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
@@ -80,7 +80,9 @@ export type ClausesPopupDto = WhereClausesDto<{
   search?:StringClause,
   name?:StringClause,
   published?:BooleanClause,
-  target?:EnumClause<PopupTarget>
+  target?:EnumClause<PopupTarget>,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryPopupDto = QueryParamsDto<SortingPopupDto,ClausesPopupDto>

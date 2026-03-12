@@ -1,5 +1,5 @@
 import { Collection } from "../collections/types";
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
@@ -129,6 +129,8 @@ export type ClausesProductDto = WhereClausesDto<{
   published?:BooleanClause,
   noCollections?:BooleanClause,
   hasImages?:BooleanClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryProductDto = QueryParamsDto<SortingProductDto,ClausesProductDto>

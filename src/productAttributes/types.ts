@@ -1,4 +1,4 @@
-import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { Metafield, OmitRequire, Translation } from "../types";
@@ -41,7 +41,7 @@ export type SortingProductAttributeDto = SortingParamsDto<{
 export type ClausesProductAttributeDto = WhereClausesDto<{
   name?:StringClause,
   published?:BooleanClause,
-  slug?:StringClause[]
+  slug?:StringClause|StringClause[]
 }>
 
 export type QueryProductAttributeDto = QueryParamsDto<SortingProductAttributeDto,ClausesProductAttributeDto>
@@ -55,11 +55,13 @@ export type ClausesProductAttributeValueDto = WhereClausesDto<{
   search?:StringClause,
   name?:StringClause,
   published?:BooleanClause,
-  attributeSlug?:StringClause[],
+  attributeSlug?:StringClause|StringClause[],
   productAttributeId?:NumberClause,
   collections?:NumberClause,
   bundles?:NumberClause,
   hasProducts?:BooleanClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryProductAttributeValueDto = QueryParamsDto<SortingProductAttributeValueDto,ClausesProductAttributeValueDto>
