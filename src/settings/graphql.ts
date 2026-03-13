@@ -24,6 +24,10 @@ export const SettingsResolvers:Resolvers<['settings'],['removeSettings']> = {
               locale
               value
             }
+            metafields {
+              key
+              value
+            }
             createdAt
             updatedAt
           }

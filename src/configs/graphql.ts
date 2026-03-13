@@ -24,6 +24,10 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
               locale
               value
             }
+            metafields {
+              key
+              value
+            }
             createdAt
             updatedAt
           }
@@ -83,6 +87,10 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
           translations {
             key
             locale
+            value
+          }
+          metafields {
+            key
             value
           }
           createdAt

@@ -29,18 +29,6 @@ async function example() {
       }
     ]
   })*/
-  api.products.findAll({
-    where:{
-      translations:[
-        {
-          key:'title'
-        },
-        {
-          key:'description'
-        }
-      ]
-    }
-  }).then(res => res.data.map(v => console.log(v.id,v.translations)))
 }
 
 example()

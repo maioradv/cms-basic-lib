@@ -1,8 +1,8 @@
 import { Permission } from "../auth/types";
-import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
-import { OmitRequire, Translation } from "../types";
+import { Metafield, OmitRequire, Translation } from "../types";
 
 export type Config = {
   id: number;
@@ -11,6 +11,7 @@ export type Config = {
   customValue: string|null;
   description: string|null;
   translations: Translation[];
+  metafields: Metafield[],
   createdAt: Date;
   updatedAt: Date;
 }
@@ -26,6 +27,8 @@ export type SortingConfigDto = SortingParamsDto<{
 export type ClausesConfigDto = WhereClausesDto<{
   name?:StringClause,
   description?:StringClause,
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QueryConfigDto = QueryParamsDto<SortingConfigDto,ClausesConfigDto>

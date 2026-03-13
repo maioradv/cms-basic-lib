@@ -1,7 +1,7 @@
-import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, ObjectClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
-import { OmitRequire, Translation } from "../types";
+import { Metafield, OmitRequire, Translation } from "../types";
 
 export type Setting = {
   id: number;
@@ -10,6 +10,7 @@ export type Setting = {
   value: string;
   description: string|null;
   translations: Translation[];
+  metafields: Metafield[],
   createdAt: Date;
   updatedAt: Date;
 }
@@ -25,7 +26,9 @@ export type SortingSettingDto = SortingParamsDto<{
 export type ClausesSettingDto = WhereClausesDto<{
   name?:StringClause,
   description?:StringClause,
-  namespace?:StringClause|StringClause[]
+  namespace?:StringClause|StringClause[],
+  metafields?:ObjectClause<Partial<Metafield>>,
+  translations?:ObjectClause<Partial<Translation>>
 }>
 
 export type QuerySettingDto = QueryParamsDto<SortingSettingDto,ClausesSettingDto>
