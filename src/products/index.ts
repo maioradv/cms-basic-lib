@@ -1,11 +1,5 @@
-import { Collection } from "../collections/types";
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { RemoveGQL } from "../core/model/remove-gql.response";
-import { queryParams } from "../core/utils/queryParams";
-import { Image } from "../images/types";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
-import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, PutProductBatchDto, PutProductDto, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
-import { WithRelation } from "../types";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { CreateCollectionOnProductDto, CreateProductAttributeValueProductDto, CreateProductDto, CreateProductImageDto, CreateProductVariantDto, FindAllProductCollectionsDto, FindAllProductDto, FindAllProductImagesDto, FindOneProductDto, Product, ProductAttributeValueProduct, ProductCollection, ProductImage, ProductVariant, PutProductBatchDto, PutProductDto, QueryProductDto, UpdateProductDto, UpdateProductImageDto } from "../products/types";
 import { ArgsUpdateProductAttributesDto, FindAllProductGQLDto, ProductsResolvers, QueryProductGQLDto } from "./graphql";
 
 export default class Products extends ApiModule implements RestApiModuleI, GraphApiModuleI {
@@ -63,7 +57,7 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
     })
   }
 
-  findAllImages(productId:number): Promise<WithRelation<ProductImage,'Image',Image>[]> {
+  findAllImages(productId:number): Promise<FindAllProductImagesDto> {
     return this._call('get',`/products/${productId}/images`)
   } 
 
@@ -75,7 +69,7 @@ export default class Products extends ApiModule implements RestApiModuleI, Graph
     return this._call('delete',`/products/${productId}/images/${imageId}`)
   }
 
-  findAllCollections(productId:number): Promise<WithRelation<ProductCollection,'Collection',Collection>[]> {
+  findAllCollections(productId:number): Promise<FindAllProductCollectionsDto> {
     return this._call('get',`/products/${productId}/collections`)
   } 
 

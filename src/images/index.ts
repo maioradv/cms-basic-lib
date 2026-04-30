@@ -1,6 +1,4 @@
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { queryParams } from "../core/utils/queryParams";
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { ImagesResolvers, QueryImageGQLDto } from "./graphql";
 import { CreateImageDto, Image, QueryImageDto } from "./types";
 

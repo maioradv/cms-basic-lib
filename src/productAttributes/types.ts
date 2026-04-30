@@ -1,7 +1,5 @@
-import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
-import { Metafield, OmitRequire, Translation } from "../types";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause } from "@maioradv/client-core";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 
 export type ProductAttribute = {
   id: number;

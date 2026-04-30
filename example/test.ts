@@ -1,6 +1,7 @@
-import { createReadStream, writeFile } from "fs";
-import { maiorCmsApiClient, ApiVersion, Gid, toGlobalId, ReservationSource, ReservationStatus } from "../src";
-import { join } from "path";
+//import { createReadStream, writeFile } from "fs";
+//import { join } from "path";
+import { maiorCmsApiClient, ApiVersion, ReservationSource, ReservationStatus } from "../src";
+
 import Credentials from './credentials.json'
 
 async function example() {
@@ -11,7 +12,7 @@ async function example() {
   })
   await api.auth()
   //api.configs.TiDelizioConfig().then(config => console.log(config))
-  const file = createReadStream(join(__dirname,'pizza1.jpg'))
+  //const file = createReadStream(join(__dirname,'pizza1.jpg'))
   /*await api.popups.createImage(9,{
     file
   })*/

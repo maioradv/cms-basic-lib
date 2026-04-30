@@ -1,11 +1,6 @@
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { RemoveGQL } from "../core/model/remove-gql.response";
-import { queryParams } from "../core/utils/queryParams";
-import { Image } from "../images/types";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
-import { WithRelation } from "../types";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { PopupsResolvers, QueryPopupGQLDto } from "./graphql";
-import { CreatePopupDto, CreatePopupImageDto, CreatePopupTriggerDto, FindOnePopupDto, Popup, PopupImage, PopupTrigger, QueryPopupDto, UpdatePopupDto, UpdatePopupImageDto, UpdatePopupTriggerDto } from "./types";
+import { CreatePopupDto, CreatePopupImageDto, CreatePopupTriggerDto, FindAllPopupImagesDto, FindOnePopupDto, Popup, PopupImage, PopupTrigger, QueryPopupDto, UpdatePopupDto, UpdatePopupImageDto, UpdatePopupTriggerDto } from "./types";
 
 export default class Popups extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreatePopupDto): Promise<Popup> {
@@ -54,7 +49,7 @@ export default class Popups extends ApiModule implements RestApiModuleI, GraphAp
     })
   }
 
-  findAllImages(popupId:number): Promise<WithRelation<PopupImage,'Image',Image>[]> {
+  findAllImages(popupId:number): Promise<FindAllPopupImagesDto> {
     return this._call('get',`/popups/${popupId}/images`)
   } 
 

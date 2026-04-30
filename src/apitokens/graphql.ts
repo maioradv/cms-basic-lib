@@ -1,5 +1,4 @@
-import { PaginatedGQLQueryDto } from "../core/dto/pagination";
-import { Resolvers } from "../core/types/resolver";
+import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
 
 export const ApiTokensResolvers:Resolvers<['apiTokens'],['removeApiTokens','syncPermissionsApiTokens']> = {
   query:{

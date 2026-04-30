@@ -1,6 +1,5 @@
-import { PaginatedGQLQueryDto } from "../core/dto/pagination";
-import { Resolvers } from "../core/types/resolver";
-import { OmitRequire, WithRelation } from "../types";
+import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
+import { OmitRequire, WithRelation } from "@maioradv/types";
 import { Product, ProductAttributeValueProduct, ProductVariant } from "./types";
 
 export const ProductsResolvers:Resolvers<['products'],['removeProducts','updateManyProductAttributes']> = {

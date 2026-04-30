@@ -1,9 +1,6 @@
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { RemoveGQL } from "../core/model/remove-gql.response";
-import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { ConfigsResolvers, QueryConfigGQLDto } from "./graphql";
-import { TiDelizioConfig, TiDelizioPlan } from "./services/tidelizio.config";
+import { TiDelizioConfig, TiDelizioPlan } from "./service";
 import { Config, CreateConfigDto, PutConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
 
 export default class Configs extends ApiModule implements RestApiModuleI, GraphApiModuleI {
@@ -49,11 +46,11 @@ export default class Configs extends ApiModule implements RestApiModuleI, GraphA
     })
   }
 
-  TiDelizioConfig(): Promise<TiDelizioConfig> {
-    return this._graphql(ConfigsResolvers.query.TiDelizioConfig)
+  Config(): Promise<TiDelizioConfig> {
+    return this._graphql(ConfigsResolvers.query.Config)
   }
 
-  initTiDelizioConfig(plan:TiDelizioPlan,config?:TiDelizioConfig): Promise<Config[]> {
-    return this._graphql(ConfigsResolvers.mutation.initTiDelizioConfig,{plan,config})
+  initConfig(plan:TiDelizioPlan,config?:TiDelizioConfig): Promise<Config[]> {
+    return this._graphql(ConfigsResolvers.mutation.initConfig,{plan,config})
   }
 }

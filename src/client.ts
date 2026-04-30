@@ -1,10 +1,8 @@
-import axios, { Axios } from "axios";
+import axios, { AxiosInstance } from "axios";
 import { ValidatedApiConfigs, ApiConfigs, validateConfigs } from "./config";
-import { ApiHeader } from "./types";
-import { ClientApiI } from "./model";
+import { ApiHeader } from "./api";
 import Auth from "./auth";
 import { AccessTokenDto } from "./auth/types";
-import { AuthError } from "./error";
 import ApiTokens from "./apitokens";
 import Collections from "./collections";
 import Images from "./images";
@@ -25,10 +23,11 @@ import LinkCollections from "./linkCollections";
 import Links from "./linkCollections/links";
 import Cache from "./cache";
 import Reservations from "./reservations";
+import { AuthError, ClientApiI } from "@maioradv/client-core";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
-  protected client:Axios;
+  protected client:AxiosInstance;
   protected configApi:ValidatedApiConfigs;
   protected accessToken:string;
   authentication:Auth;
@@ -59,7 +58,7 @@ export class MaiorCmsApiClient implements ClientApiI
     this._initModules()
   }
 
-  protected _initClient(): Axios {
+  protected _initClient(): AxiosInstance {
     const client = axios.create()
     client.defaults.baseURL = this.configApi.sandbox ? `http://${this.configApi.host}` : `https://${this.configApi.host}`;
     client.defaults.headers.common[ApiHeader.ApiVersion] = this.configApi.version

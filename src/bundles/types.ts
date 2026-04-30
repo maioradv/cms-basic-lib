@@ -1,11 +1,7 @@
 import { Collection } from "../collections/types";
-import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
-import { CreateImageDto, Image } from "../images/types";
-import { ProductAttribute, ProductAttributeValue } from "../productAttributes/types";
 import { Product } from "../products/types";
-import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause } from "@maioradv/client-core";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 
 export type Bundle = {
   id:number;

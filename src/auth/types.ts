@@ -1,16 +1,12 @@
 import { ApiToken } from "../apitokens/types";
-import { Customer } from "../customers/types";
+import Maior, { Customer, Operator } from '@maioradv/types'
 
-export type AccessTokenDto = {
-  access_token:string;
-  token_type:string;
-  expires_in:number;
-  refresh_token?:string;
-}
+export type AccessTokenDto = Maior.AccessTokenDto
 
 export enum JwtContextType {
   customer = 'Customer',
-  apiToken = 'ApiToken'
+  apiToken = 'ApiToken',
+  operator = 'Operator'
 }
 
 export type JwtPayloadContext = {
@@ -19,19 +15,12 @@ export type JwtPayloadContext = {
   name:string;
 }
 
-export type JwtPayload = {
-  sub: string;
-  aud: string[];
-  scope: string[];
-  iat: number;
-  exp: number;
-  iss: string;
-  context: JwtPayloadContext;
-}
+export type JwtPayload = Maior.JwtPayload<JwtPayloadContext>
 
 export type Jwt = {
   payload:JwtPayload;
   Customer?:Customer;
+  Operator?:Operator;
   ApiToken?:ApiToken;
 }
 
@@ -44,8 +33,6 @@ export enum Permission {
   write_productattributes = 'write_productattributes',
   read_productattributevalues = 'read_productattributevalues',
   write_productattributevalues = 'write_productattributevalues',
-  read_discounts = 'read_discounts',
-  write_discounts = 'write_discounts',
   read_languages = 'read_languages',
   write_languages = 'write_languages',
   read_images = 'read_images',
@@ -69,4 +56,8 @@ export enum Permission {
   read_reservations = 'read_reservations',
   write_reservations = 'write_reservations',
   push_reservations = 'push_reservations',
+
+  deploy_configs = 'deploy_configs',
+  deploy_roles = 'deploy_roles',
+  deploy_apitokens = 'deploy_apitokens',
 }

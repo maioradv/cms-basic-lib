@@ -1,4 +1,4 @@
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { PopupTrigger, UpdatePopupTriggerDto } from "./types";
 
 export default class PopupTriggers extends ApiModule {

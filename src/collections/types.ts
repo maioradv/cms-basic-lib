@@ -1,10 +1,8 @@
 import { Bundle, BundleCollection, BundleProduct, BundleVariant } from "../bundles/types";
-import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
 import { CreateImageDto, Image } from "../images/types";
-import { CreateProductCollectionDto, Product, ProductCollection, ProductImage, ProductVariant } from "../products/types";
-import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
+import { CreateProductCollectionDto, Product, ProductCollection, ProductImage } from "../products/types";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause } from "@maioradv/client-core";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 
 export type Collection = {
   id: number;
@@ -97,3 +95,5 @@ export type QueryCollectionBundlesDto = Omit<QueryParamsDto<
       published?:BooleanClause
     }>
   >,'sorting'>
+
+export type FindAllCollectionImagesDto = WithRelation<CollectionImage,'Image',Image>[]

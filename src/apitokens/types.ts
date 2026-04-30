@@ -1,7 +1,5 @@
 import { Permission } from "../auth/types";
-import { BooleanClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto } from "@maioradv/client-core";
 
 export type ApiToken = {
   id: number;

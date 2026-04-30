@@ -1,10 +1,8 @@
 import { Collection } from "../collections/types";
-import { BooleanClause, ObjectClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause } from "@maioradv/client-core";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 import { CreateImageDto, Image } from "../images/types";
 import { ProductAttribute, ProductAttributeValue } from "../productAttributes/types";
-import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export type Product = {
   id:number;
@@ -134,3 +132,6 @@ export type ClausesProductDto = WhereClausesDto<{
 }>
 
 export type QueryProductDto = QueryParamsDto<SortingProductDto,ClausesProductDto>
+
+export type FindAllProductImagesDto = WithRelation<ProductImage,'Image',Image>[]
+export type FindAllProductCollectionsDto = WithRelation<ProductCollection,'Collection',Collection>[]

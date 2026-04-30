@@ -1,6 +1,5 @@
-import { PaginatedGQLQueryDto } from "../core/dto/pagination";
-import { Resolvers } from "../core/types/resolver";
-import { OmitRequire, WithRelations } from "../types";
+import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
+import { OmitRequire, WithRelations } from "@maioradv/types";
 import { Bundle, BundleProduct, BundleVariant } from "./types";
 
 export const BundlesResolvers:Resolvers<['bundles'],['removeBundles','updateManyBundleProducts']> = {

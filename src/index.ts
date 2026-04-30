@@ -4,8 +4,7 @@ import { ApiConfigs } from "./config";
 export { MaiorCmsApiClient }
 export type MaiorCmsApiConfigs = ApiConfigs
 
-export * from './types'
-export * from './error'
+export * from './api'
 export * from './auth/types'
 export * from './apitokens/types'
 export * from './collections/types'
@@ -21,11 +20,8 @@ export * from './settings/types'
 export * from './bundles/types'
 export * from './linkCollections/types'
 export * from './reservations/types'
-export * from './gid'
 
-export * from './core/dto/pagination'
-
-export { TiDelizioPlan, TiDelizioConfig } from './configs/services/tidelizio.config'
+export { TiDelizioPlan, TiDelizioConfig } from './configs/service'
 
 export function maiorCmsApiClient(opt:MaiorCmsApiConfigs): MaiorCmsApiClient {
   return new MaiorCmsApiClient(opt)

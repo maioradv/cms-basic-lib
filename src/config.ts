@@ -1,6 +1,7 @@
 import { AxiosInstance } from "axios"
-import { ConfigError } from "./error"
-import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS, WithRequired } from "./types"
+import { ApiVersion, LATEST_API_VERSION, SUPPORTED_API_VERSIONS } from "./api"
+import { WithRequired } from "@maioradv/types"
+import { ConfigError } from "@maioradv/client-core"
 
 export type ApiConfigs = {
   host:string,

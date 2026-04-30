@@ -1,8 +1,6 @@
-import { BooleanClause, EnumClause, ObjectClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
-import { Sorting, SortingParamsDto } from "../core/dto/sorting";
-import { QueryParamsDto } from "../core/utils/queryParams";
+import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause, EnumClause } from "@maioradv/client-core";
+import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 import { CreateImageDto, Image } from "../images/types";
-import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "../types";
 
 export enum PopupTarget {
   all = 'all',
@@ -86,3 +84,5 @@ export type ClausesPopupDto = WhereClausesDto<{
 }>
 
 export type QueryPopupDto = QueryParamsDto<SortingPopupDto,ClausesPopupDto>
+
+export type FindAllPopupImagesDto = WithRelation<PopupImage,'Image',Image>[]

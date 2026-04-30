@@ -1,12 +1,10 @@
-import { ServiceConfig } from "../model";
-
 export enum TiDelizioPlan {
   standard = 'standard',
   plus = 'plus',
   premium = 'premium'
 }
 
-export interface TiDelizioConfig extends ServiceConfig {
+export interface TiDelizioConfig {
   allowGoogleAnalytics?:boolean;
   allowMetaPixel?:boolean;
   allowGoogleTagManager?:boolean;

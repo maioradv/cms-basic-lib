@@ -1,13 +1,8 @@
 import { BundleCollection } from "../bundles/types";
-import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
-import { RemoveGQL } from "../core/model/remove-gql.response";
-import { queryParams } from "../core/utils/queryParams";
-import { Image } from "../images/types";
-import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { ProductCollection } from "../products/types";
-import { WithRelation } from "../types";
 import { ArgsUpdateBundlesDto, ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
-import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionBundlesDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindOneCollectionDto, QueryCollectionBundlesDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
+import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionBundlesDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindAllCollectionImagesDto, FindOneCollectionDto, QueryCollectionBundlesDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
 
 export default class Collections extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(args:CreateCollectionDto): Promise<Collection> {
@@ -76,7 +71,7 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     })
   }
 
-  findAllImages(collectionId:number): Promise<WithRelation<CollectionImage,'Image',Image>[]> {
+  findAllImages(collectionId:number): Promise<FindAllCollectionImagesDto> {
     return this._call('get',`/collections/${collectionId}/images`)
   } 
 

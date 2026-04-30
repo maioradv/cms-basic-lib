@@ -1,4 +1,4 @@
-import { ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
 import { ProductVariant, UpdateProductVariantDto } from "../products/types";
 
 export default class ProductVariants extends ApiModule {

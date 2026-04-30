@@ -1,7 +1,6 @@
-import { PaginatedGQLQueryDto } from "../core/dto/pagination";
-import { Resolvers } from "../core/types/resolver";
+import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
 
-export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeConfigs','initTiDelizioConfig']> = {
+export const ConfigsResolvers:Resolvers<['configs','Config'],['removeConfigs','initConfig']> = {
   query:{
     configs:{
       name:'configs',
@@ -40,10 +39,10 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
         }
       }`,
     },
-    TiDelizioConfig:{
-      name:'TiDelizioConfig',
+    Config:{
+      name:'Config',
       query:`query {
-        TiDelizioConfig {
+        Config {
           allowGoogleAnalytics
           allowMetaPixel
           allowGoogleTagManager
@@ -75,10 +74,10 @@ export const ConfigsResolvers:Resolvers<['configs','TiDelizioConfig'],['removeCo
         }
       }`,
     },  
-    initTiDelizioConfig:{
-      name:'initTiDelizioConfig',
-      query: `mutation ConfigInitTiDelizio($plan: TiDelizioPlan!, $config: TiDelizioConfigDto){
-        initTiDelizioConfig(plan: $plan, config: $config) {
+    initConfig:{
+      name:'initConfig',
+      query: `mutation ConfigInit($plan: TiDelizioPlan!, $config: TiDelizioConfigDto){
+        initConfig(plan: $plan, config: $config) {
           id
           name
           value
