@@ -24,6 +24,7 @@ import Links from "./linkCollections/links";
 import Cache from "./cache";
 import Reservations from "./reservations";
 import { AuthError, ClientApiI } from "@maioradv/client-core";
+import Secrets from "./secrets";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -51,6 +52,7 @@ export class MaiorCmsApiClient implements ClientApiI
   links:Links;
   cache:Cache;
   reservations:Reservations;
+  secrets:Secrets;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -89,6 +91,7 @@ export class MaiorCmsApiClient implements ClientApiI
     this.links = new Links(this.client)
     this.cache = new Cache(this.client)
     this.reservations = new Reservations(this.client)
+    this.secrets = new Secrets(this.client)
   }
 
   _setAccessToken(accessToken:string) {
