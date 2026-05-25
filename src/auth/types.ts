@@ -56,6 +56,11 @@ export enum Permission {
   read_reservations = 'read_reservations',
   write_reservations = 'write_reservations',
   push_reservations = 'push_reservations',
+  ead_pushsubscriptions = 'read_pushsubscriptions',
+  write_pushsubscriptions = 'write_pushsubscriptions',
+  register_pushsubscriptions = 'register_pushsubscriptions',
+  read_secrets = 'read_secrets',
+  write_secrets = 'write_secrets',
 
   deploy_configs = 'deploy_configs',
   deploy_roles = 'deploy_roles',

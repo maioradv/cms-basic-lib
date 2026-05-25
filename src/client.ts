@@ -25,6 +25,7 @@ import Cache from "./cache";
 import Reservations from "./reservations";
 import { AuthError, ClientApiI } from "@maioradv/client-core";
 import Secrets from "./secrets";
+import PushSubscriptions from "./pushSubscriptions";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -53,6 +54,7 @@ export class MaiorCmsApiClient implements ClientApiI
   cache:Cache;
   reservations:Reservations;
   secrets:Secrets;
+  pushSubscriptions:PushSubscriptions;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -92,6 +94,7 @@ export class MaiorCmsApiClient implements ClientApiI
     this.cache = new Cache(this.client)
     this.reservations = new Reservations(this.client)
     this.secrets = new Secrets(this.client)
+    this.pushSubscriptions = new PushSubscriptions(this.client)
   }
 
   _setAccessToken(accessToken:string) {
