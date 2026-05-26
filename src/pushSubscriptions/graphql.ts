@@ -1,6 +1,6 @@
 import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
 
-export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions'],['removePushSubscriptions']> = {
+export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions'],['removePushSubscriptions','managePushSubscription']> = {
   query:{
     pushSubscriptions:{
       name:'pushSubscriptions',
@@ -20,6 +20,7 @@ export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions'],['remove
             platform
             locale
             timezone
+            active
             createdAt
             updatedAt
           }
@@ -42,6 +43,23 @@ export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions'],['remove
         }
       }`,
     },  
+    managePushSubscription:{
+      name:'managePushSubscription',
+      query: `mutation ManagePushSubscription($id: Int!, $update: ManagePushSubscriptionDto!) {
+        managePushSubscription(id: $id, update: $update) {
+          id
+          customerId
+          token
+          deviceId
+          platform
+          locale
+          timezone
+          active
+          createdAt
+          updatedAt
+        }
+      }`,
+    },
   }
 }
 
