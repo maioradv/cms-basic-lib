@@ -26,6 +26,11 @@ import Reservations from "./reservations";
 import { AuthError, ClientApiI } from "@maioradv/client-core";
 import Secrets from "./secrets";
 import PushSubscriptions from "./pushSubscriptions";
+import Audiences from "./audiences";
+import AudienceEvents from "./audiences/events";
+import AudienceTags from "./audience-tags";
+import Segments from "./segments";
+import Campaigns from "./campaigns";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
@@ -55,6 +60,11 @@ export class MaiorCmsApiClient implements ClientApiI
   reservations:Reservations;
   secrets:Secrets;
   pushSubscriptions:PushSubscriptions;
+  audiences:Audiences;
+  audienceEvents:AudienceEvents;
+  audienceTags:AudienceTags;
+  segments:Segments;
+  campaigns:Campaigns;
 
   constructor(protected config: ApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -95,6 +105,11 @@ export class MaiorCmsApiClient implements ClientApiI
     this.reservations = new Reservations(this.client)
     this.secrets = new Secrets(this.client)
     this.pushSubscriptions = new PushSubscriptions(this.client)
+    this.audiences = new Audiences(this.client)
+    this.audienceEvents = new AudienceEvents(this.client)
+    this.audienceTags = new AudienceTags(this.client)
+    this.segments = new Segments(this.client)
+    this.campaigns = new Campaigns(this.client)
   }
 
   _setAccessToken(accessToken:string) {

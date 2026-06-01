@@ -1,0 +1,27 @@
+import { ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, queryParams, RemoveGQL, RestApiModuleI } from "@maioradv/client-core";
+import { CreateSegmentDto, QuerySegmentDto, Segment, UpdateSegmentDto } from "./types";
+import { QuerySegmentGQLDto, SegmentsResolvers } from "./graphql";
+
+export default class Segments extends ApiModule implements RestApiModuleI, GraphApiModuleI {
+  create(args: CreateSegmentDto): Promise<Segment> {
+    return this._call('post', '/segments', args);
+  }
+  findAll(args: QuerySegmentDto = {}): Promise<PaginatedDto<Segment>> {
+    return this._call('get', '/segments', queryParams(args));
+  }
+  findOne(id: number): Promise<Segment> {
+    return this._call('get', `/segments/${id}`);
+  }
+  update(id: number, data: UpdateSegmentDto): Promise<Segment> {
+    return this._call('patch', `/segments/${id}`, data);
+  }
+  remove(id: number): Promise<Segment> {
+    return this._call('delete', `/segments/${id}`);
+  }
+  list(args: QuerySegmentGQLDto = {}): Promise<PaginatedGQL<Segment>> {
+    return this._graphql(SegmentsResolvers.query.segments, args);
+  }
+  removeMany(id: number | number[]): Promise<RemoveGQL> {
+    return this._graphql(SegmentsResolvers.mutation.removeSegments, { id });
+  }
+}

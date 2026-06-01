@@ -20,6 +20,10 @@ export * from './settings/types'
 export * from './bundles/types'
 export * from './linkCollections/types'
 export * from './reservations/types'
+export * from './audiences/types'
+export * from './audience-tags/types'
+export * from './segments/types'
+export * from './campaigns/types'
 
 export { TiDelizioPlan, TiDelizioConfig } from './configs/service'
 
