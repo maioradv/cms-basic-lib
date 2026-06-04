@@ -31,4 +31,7 @@ export default class Audiences extends ApiModule implements RestApiModuleI, Grap
   findAllEvents(audienceId: number): Promise<AudienceEvent[]> {
     return this._call('get', `/audiences/${audienceId}/events`);
   }
+  unsubscribe(token:string): Promise<Audience> {
+    return this._graphql(AudiencesResolvers.mutation.ubsubscribeAudience, { token });
+  }
 }

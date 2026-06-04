@@ -1,6 +1,6 @@
 import { PaginatedGQLQueryDto, Resolvers } from "@maioradv/client-core";
 
-export const AudiencesResolvers: Resolvers<['audiences'],['removeAudiences']> = {
+export const AudiencesResolvers: Resolvers<['audiences'],['removeAudiences','ubsubscribeAudience']> = {
   query: {
     audiences: {
       name: 'audiences',
@@ -36,6 +36,25 @@ export const AudiencesResolvers: Resolvers<['audiences'],['removeAudiences']> = 
       name: 'removeAudiences',
       query: `mutation AudienceDelete($id: [Int!]!) {
         removeAudiences(id: $id) { count }
+      }`,
+    },
+    ubsubscribeAudience: {
+      name: 'ubsubscribeAudience',
+      query: `mutation AudienceUnsubscribe($token: String!) {
+        ubsubscribeAudience(token: $token) {  
+          id
+          name
+          phone
+          email
+          lastName
+          customerId
+          uuid
+          locale
+          metadata
+          createdAt
+          updatedAt
+          deletedAt
+        }
       }`,
     },
   },

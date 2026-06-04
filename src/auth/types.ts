@@ -63,6 +63,7 @@ export enum Permission {
   write_secrets = 'write_secrets',
   read_audiences = 'read_audiences',
   write_audiences = 'write_audiences',
+  push_audiences = 'push_audiences',
   read_audienceevents = 'read_audienceevents',
   write_audienceevents = 'write_audienceevents',
   read_audiencetags = 'read_audiencetags',

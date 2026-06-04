@@ -28,6 +28,15 @@ type ReservationEvents = {
   }
 }
 
+type AudienceCampaignEvent = {
+  name: 'campaigns.sent',
+  payload: {
+    id:number,
+    channel:'whatsapp'|'email',
+    scheduledAt:Date
+  }
+}
+
 type AudienceEvents = {
   name: 'audiences.dataConflict',
   payload: {
@@ -39,7 +48,7 @@ type AudienceEvents = {
   }
 }
 
-export type AudienceEventData = ReservationEvents | AudienceEvents;
+export type AudienceEventData = ReservationEvents | AudienceEvents | AudienceCampaignEvent;
 
 export type CreateAudienceDto = OmitRequire<Audience,'id' | 'uuid' | 'createdAt' | 'updatedAt' | 'deletedAt','name' | 'phone'> & {
   tags?: number[];
