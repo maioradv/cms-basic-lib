@@ -19,6 +19,9 @@ export default class Audiences extends ApiModule implements RestApiModuleI, Grap
   remove(id: number): Promise<Audience> {
     return this._call('delete', `/audiences/${id}`);
   }
+  restore(id: number): Promise<Audience> {
+    return this._graphql(AudiencesResolvers.mutation.restoreAudience, { id });
+  }
   list(args: QueryAudienceGQLDto = {}): Promise<PaginatedGQL<Audience>> {
     return this._graphql(AudiencesResolvers.query.audiences, args);
   }
