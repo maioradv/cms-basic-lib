@@ -1,5 +1,5 @@
 import { ApiModule, RestApiModuleI, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
-import { Audience, CreateAudienceDto, FindOneAudienceDto, QueryAudienceDto, UpdateAudienceDto } from "./types";
+import { Audience, CreateAudienceDto, FindAllAudienceDto, FindOneAudienceDto, QueryAudienceDto, UpdateAudienceDto } from "./types";
 import { AudiencesResolvers, QueryAudienceGQLDto } from "./graphql";
 import { AudienceEvent, CreateAudienceEventDto } from "./types";
 
@@ -7,7 +7,7 @@ export default class Audiences extends ApiModule implements RestApiModuleI, Grap
   create(args: CreateAudienceDto): Promise<Audience> {
     return this._call('post', '/audiences', args);
   }
-  findAll(args: QueryAudienceDto = {}): Promise<PaginatedDto<Audience>> {
+  findAll(args: QueryAudienceDto = {}): Promise<PaginatedDto<FindAllAudienceDto>> {
     return this._call('get', '/audiences', queryParams(args));
   }
   findOne(id: number): Promise<FindOneAudienceDto> {

@@ -91,6 +91,10 @@ export type ClausesAudienceDto = WhereClausesDto<{
 
 export type QueryAudienceDto = QueryParamsDto<SortingAudienceDto, ClausesAudienceDto>;
 
+export type FindAllAudienceDto = WithRelations<Audience, {
+  tags: AudienceTag[];
+}>;
+
 export type FindOneAudienceDto = WithRelations<Audience, {
   tags: AudienceTag[];
 }>;
