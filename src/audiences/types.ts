@@ -19,7 +19,7 @@ export type Audience = {
   deletedAt: Date | null;
 }
 
-type ReservationEvents = {
+export type AudienceReservationEvents = {
   name: 'reservations.pending'|'reservations.confirmed'|'reservations.cancelled'|'reservations.noShow'|'reservations.completed',
   payload: {
     id:number,
@@ -28,7 +28,7 @@ type ReservationEvents = {
   }
 }
 
-type AudienceCampaignEvent = {
+export type AudienceCampaignEvents = {
   name: 'campaigns.sent',
   payload: {
     id:number,
@@ -37,18 +37,24 @@ type AudienceCampaignEvent = {
   }
 }
 
-type AudienceEvents = {
+export type AudienceEvents = {
   name: 'audiences.dataConflict',
   payload: {
-    id:number,
     field:string,
-    existing:string,
-    incoming:string,
-    source:Gid<'tidelizio'>
+    existing:string|boolean|number|Date,
+    incoming:string|boolean|number|Date,
+    source?:Gid<'tidelizio'>
+  }
+} | {
+  name: 'audiences.subscriptionUpdate',
+  payload: {
+    action:'create'|'remove',
+    source?:Gid<'tidelizio'>,
+    reason?:string
   }
 }
 
-export type AudienceEventData = ReservationEvents | AudienceEvents | AudienceCampaignEvent;
+export type AudienceEventData = AudienceReservationEvents | AudienceEvents | AudienceCampaignEvents;
 
 export type CreateAudienceDto = OmitRequire<Audience,'id' | 'uuid' | 'createdAt' | 'updatedAt' | 'deletedAt','name' | 'phone'> & {
   tags?: number[];
