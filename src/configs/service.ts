@@ -17,6 +17,7 @@ export interface TiDelizioConfig {
   allowPopup?:boolean;
   allowLinks?:boolean;
   allowReservations?:boolean;
+  allowMarketing?:boolean;
   allowCustomTheme?:boolean;
   plan?:TiDelizioPlan;
   maxMenuCollectionNumber?:number;

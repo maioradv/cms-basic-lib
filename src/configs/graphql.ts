@@ -56,6 +56,7 @@ export const ConfigsResolvers:Resolvers<['configs','Config'],['removeConfigs','i
           allowCustomTheme
           allowLinks
           allowReservations
+          allowMarketing
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber
