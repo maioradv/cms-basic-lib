@@ -31,12 +31,14 @@ import AudienceEvents from "./audiences/events";
 import AudienceTags from "./audience-tags";
 import Segments from "./segments";
 import Campaigns from "./campaigns";
+import { SseHandler } from "./sse";
 
 export class MaiorCmsApiClient implements ClientApiI
 {
   protected client:AxiosInstance;
   protected configApi:ValidatedApiConfigs;
   protected accessToken:string;
+  sse:SseHandler;
   authentication:Auth;
   apiTokens:ApiTokens;
   collections:Collections;
@@ -83,6 +85,7 @@ export class MaiorCmsApiClient implements ClientApiI
 
   protected _initModules() {
     this.authentication = new Auth(this.client)
+    this.sse = new SseHandler(this.client)
     this.apiTokens = new ApiTokens(this.client)
     this.collections = new Collections(this.client)
     this.configs = new Configs(this.client)
@@ -115,24 +118,27 @@ export class MaiorCmsApiClient implements ClientApiI
   _setAccessToken(accessToken:string) {
     this.client.defaults.headers.common[ApiHeader.Authorization] = `Bearer ${accessToken}`
     this.accessToken = accessToken
+    this._initSse()
   }
 
   _getAccessToken() {
     return this.accessToken
   }
 
+  _initSse() {
+    this.sse.connect()
+  }
+
   async auth(): Promise<AccessTokenDto> {
     if(!this.configApi.credentials) throw new AuthError('Missing credentials')
     const access = this.configApi.credentials.apiToken ? await this.authentication.token(this.configApi.credentials.apiToken) : await this.authentication.jwt(this.configApi.credentials.accessToken)
-    this.accessToken = access.access_token
-    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    this._setAccessToken(access.access_token)
     return access
   }
 
   async jwt(accessToken:string): Promise<AccessTokenDto> {
     const access = await this.authentication.jwt(accessToken)
-    this.accessToken = access.access_token
-    this.client.defaults.headers.common[ApiHeader.Authorization] = `${access.token_type} ${access.access_token}`
+    this._setAccessToken(access.access_token)
     return access
   }
 }

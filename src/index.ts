@@ -27,6 +27,8 @@ export * from './campaigns/types'
 
 export { TiDelizioPlan, TiDelizioConfig } from './configs/service'
 
+export { TiDelizioEvents , TiDelizioEvent } from './sse'
+
 export function maiorCmsApiClient(opt:MaiorCmsApiConfigs): MaiorCmsApiClient {
   return new MaiorCmsApiClient(opt)
 }
