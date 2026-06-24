@@ -8,6 +8,11 @@ export type TiDelizioEvents = {
     action: 'create';
     id: number;
   };
+  campaigns:{
+    action:'update',
+    id:number,
+    status?:string,
+  };
 }
 
 export type TiDelizioEvent<K extends keyof TiDelizioEvents = keyof TiDelizioEvents> =  
