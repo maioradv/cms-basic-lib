@@ -32,6 +32,7 @@ export type AudienceCampaignEvents = {
   name: 'campaigns.sent',
   payload: {
     id:number,
+    name:string,
     channel:'whatsapp'|'email',
     scheduledAt:Date
   }
