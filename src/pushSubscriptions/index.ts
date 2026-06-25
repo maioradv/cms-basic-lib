@@ -40,7 +40,7 @@ export default class PushSubscriptions extends ApiModule implements RestApiModul
   /**
    * @requires Customer - Context Type
    */
-  listMine() : Promise<PushSubscriptions[]> {
+  listMine() : Promise<PushSubscription[]> {
     return this._graphql(PushSubscriptionsResolvers.query.listPushSubscriptions)
   }
 
