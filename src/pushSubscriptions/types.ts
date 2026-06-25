@@ -3,6 +3,7 @@ import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from
 
 export type PushSubscription = {
   id: number;
+  name: string|null;
   customerId: number;
   token: string;
   deviceId: string;
@@ -24,9 +25,11 @@ export type SortingPushSubscriptionDto = SortingParamsDto<{
   platform?: Sorting;
   locale?: Sorting;
   active?: Sorting;
+  name?: Sorting;
 }>
 
 export type ClausesPushSubscriptionDto = WhereClausesDto<{
+  search?:StringClause,
   customerId?:NumberClause,
   token?:StringClause,
   ddeviceId?:StringClause,
