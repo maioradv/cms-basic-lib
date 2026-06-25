@@ -36,7 +36,7 @@ export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions','listPush
     },
     listPushSubscriptions:{
       name:'listPushSubscriptions',
-      query: `query PushSubscriptionList() {
+      query: `query PushSubscriptionListMine {
         listPushSubscriptions {
           id
           name
@@ -64,7 +64,7 @@ export const PushSubscriptionsResolvers:Resolvers<['pushSubscriptions','listPush
     },  
     managePushSubscription:{
       name:'managePushSubscription',
-      query: `mutation ManagePushSubscription($id: Int!, $update: ManagePushSubscriptionDto!) {
+      query: `mutation PushSubscriptionManage($id: Int!, $update: ManagePushSubscriptionDto!) {
         managePushSubscription(id: $id, update: $update) {
           id
           name
