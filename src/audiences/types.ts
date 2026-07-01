@@ -99,6 +99,7 @@ export type ClausesAudienceDto = WhereClausesDto<{
   email?: StringClause;
   lastName?: StringClause;
   customerId?: NumberClause;
+  tagId?: NumberClause;
   locale?:StringClause|StringClause[],
   metadata?: ObjectClause<MetadataClause>;
   isDeleted?: BooleanClause;
