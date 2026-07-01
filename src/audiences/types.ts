@@ -13,6 +13,7 @@ export type Audience = {
   customerId: number | null;
   uuid: string;
   locale: string;
+  privacy: boolean;
   metadata: Record<string, unknown>;
   createdAt: Date;
   updatedAt: Date;
@@ -82,6 +83,7 @@ export type SortingAudienceDto = SortingParamsDto<{
   phone?: Sorting;
   email?: Sorting;
   lastName?: Sorting;
+  privacy?: Sorting;
 }>;
 
 export type ClausesAudienceDto = WhereClausesDto<{
@@ -94,6 +96,7 @@ export type ClausesAudienceDto = WhereClausesDto<{
   locale?:StringClause|StringClause[],
   metadata?: ObjectClause<MetadataClause>;
   isDeleted?: BooleanClause;
+  privacy?: BooleanClause;
 }>;
 
 export type QueryAudienceDto = QueryParamsDto<SortingAudienceDto, ClausesAudienceDto>;
