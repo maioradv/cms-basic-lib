@@ -54,6 +54,12 @@ export type AudienceEvents = {
     source?:Gid<'tidelizio'>,
     reason?:string
   }
+} | {
+  name: 'audiences.privacyUpdate',
+  payload: {
+    incoming:boolean,
+    source?:Gid<'tidelizio'>,
+  }
 }
 
 export type AudienceEventData = AudienceReservationEvents | AudienceEvents | AudienceCampaignEvents;
