@@ -2,6 +2,7 @@
 import { AxiosInstance } from 'axios';
 import { ApiHeader } from './api';
 import { SseClient } from '@maioradv/client-core';
+import { Entity } from '@maioradv/types';
 
 export type TiDelizioEvents = {
   reservations: {
@@ -12,6 +13,10 @@ export type TiDelizioEvents = {
     action:'update',
     id:number,
     status?:string,
+  };
+  batch:{
+    entity:Entity<'tidelizio'>,
+    status:'completed',
   };
 }
 

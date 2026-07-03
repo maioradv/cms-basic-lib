@@ -72,6 +72,15 @@ export type UpdateAudienceDto = Partial<CreateAudienceDto> & {
   removeTags?: number[];
 };
 
+export type PutAudienceDto = CreateAudienceDto & {
+  removeTags?: number[];
+};
+
+export type PutAudienceBatchDto = {
+  audiences: PutAudienceDto[];
+  skipUpdate?: boolean;
+};
+
 export type AudienceEvent = {
   id: number;
   audienceId: number;
