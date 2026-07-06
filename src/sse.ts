@@ -17,6 +17,7 @@ export type TiDelizioEvents = {
   batch:{
     entity:Entity<'tidelizio'>,
     status:'completed',
+    description?:string
   };
 }
 

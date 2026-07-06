@@ -54,17 +54,11 @@ export type AudienceEvents = {
     source?:Gid<'tidelizio'>,
     reason?:string
   }
-} | {
-  name: 'audiences.privacyUpdate',
-  payload: {
-    incoming:boolean,
-    source?:Gid<'tidelizio'>,
-  }
 }
 
 export type AudienceEventData = AudienceReservationEvents | AudienceEvents | AudienceCampaignEvents;
 
-export type CreateAudienceDto = OmitRequire<Audience,'id' | 'uuid' | 'createdAt' | 'updatedAt' | 'deletedAt','name' | 'phone'> & {
+export type CreateAudienceDto = OmitRequire<Audience,'id' | 'uuid' | 'createdAt' | 'updatedAt' | 'deletedAt' | 'privacy','name' | 'phone'> & {
   tags?: number[];
 };
 
