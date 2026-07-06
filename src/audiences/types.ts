@@ -73,6 +73,7 @@ export type PutAudienceDto = CreateAudienceDto & {
 export type PutAudienceBatchDto = {
   audiences: PutAudienceDto[];
   skipUpdate?: boolean;
+  description?: string,
 };
 
 export type AudienceEvent = {
