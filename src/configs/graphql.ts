@@ -57,6 +57,7 @@ export const ConfigsResolvers:Resolvers<['configs','Config'],['removeConfigs','i
           allowLinks
           allowReservations
           allowMarketing
+          allowSeo
           maxMenuCollectionNumber
           maxProductImageNumber
           maxProductsCollectionNumber

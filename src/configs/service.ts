@@ -18,6 +18,7 @@ export interface TiDelizioConfig {
   allowLinks?:boolean;
   allowReservations?:boolean;
   allowMarketing?:boolean;
+  allowSeo?:boolean;
   allowCustomTheme?:boolean;
   plan?:TiDelizioPlan;
   maxMenuCollectionNumber?:number;
