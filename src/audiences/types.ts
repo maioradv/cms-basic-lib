@@ -67,6 +67,7 @@ export type UpdateAudienceDto = Partial<CreateAudienceDto> & {
 };
 
 export type PutAudienceDto = CreateAudienceDto & {
+  id?:number;
   removeTags?: number[];
 };
 

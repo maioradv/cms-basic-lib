@@ -35,7 +35,7 @@ export const SegmentsResolvers:Resolvers<['segments'],['removeSegments']> = {
       name:'removeSegments',
       query: `mutation SegmentDelete($id: [Int!]!){
         removeSegments(id: $id) {
-          count }
+          count
         }
       }`,
     },
