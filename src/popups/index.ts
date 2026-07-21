@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { PopupsResolvers, QueryPopupGQLDto } from "./graphql";
 import { CreatePopupDto, CreatePopupImageDto, CreatePopupTriggerDto, FindAllPopupImagesDto, FindOnePopupDto, Popup, PopupImage, PopupTrigger, QueryPopupDto, UpdatePopupDto, UpdatePopupImageDto, UpdatePopupTriggerDto } from "./types";
 
@@ -27,7 +27,7 @@ export default class Popups extends ApiModule implements RestApiModuleI, GraphAp
     return this._graphql(PopupsResolvers.query.popups,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(PopupsResolvers.mutation.removePopups,{
       id
     })

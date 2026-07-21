@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { ArgsUpdateBundleProductsDto, BundlesResolvers, FindAllBundleGQLDto, QueryBundleGQLDto } from "./graphql";
 import { Bundle, BundleProduct, BundleVariant, CreateBundleDto, CreateBundleVariantDto, FindAllBundleDto, FindOneBundleDto, QueryBundleDto, UpdateBundleDto } from "./types";
 
@@ -27,7 +27,7 @@ export default class Bundles extends ApiModule implements RestApiModuleI, GraphA
     return this._graphql(BundlesResolvers.query.bundles,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(BundlesResolvers.mutation.removeBundles,{
       id
     })

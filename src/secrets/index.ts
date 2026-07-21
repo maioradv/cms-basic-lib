@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { QuerySecretGQLDto, SecretsResolvers } from "./graphql";
 import { CreateSecretDto, PutSecretDto, QuerySecretDto, Secret, UpdateSecretDto } from "./types";
 
@@ -39,7 +39,7 @@ export default class Secrets extends ApiModule implements RestApiModuleI, GraphA
     return this._graphql(SecretsResolvers.query.secrets,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(SecretsResolvers.mutation.removeSecrets,{
       id
     })

@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { ProductAttributeValuesResolvers, QueryProductAttributeValueGQLDto } from "./graphql";
 import { ProductAttributeValue, QueryProductAttributeValueDto, UpdateProductAttributeValueDto } from "./types";
 
@@ -24,7 +24,7 @@ export default class ProductAttributeValues extends ApiModule implements GraphAp
     return this._graphql(ProductAttributeValuesResolvers.query.productAttributeValues,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(ProductAttributeValuesResolvers.mutation.removeProductAttributeValues,{
       id
     })

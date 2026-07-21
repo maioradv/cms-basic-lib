@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { QueryReservationGQLDto, ReservationsResolvers } from "./graphql";
 import { CreateReservationDto, QueryReservationDto, Reservation, UpdateReservationDto, PushReservationDto } from "./types";
 
@@ -27,7 +27,7 @@ export default class Reservations extends ApiModule implements RestApiModuleI, G
     return this._graphql(ReservationsResolvers.query.reservations,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(ReservationsResolvers.mutation.removeReservations,{
       id
     })

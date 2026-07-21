@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { LanguagesResolvers, QueryLanguageGQLDto } from "./graphql";
 import { CreateLanguageDto, Language, QueryLanguageDto, UpdateLanguageDto } from "./types";
 
@@ -27,7 +27,7 @@ export default class Languages extends ApiModule implements RestApiModuleI, Grap
     return this._graphql(LanguagesResolvers.query.languages,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(LanguagesResolvers.mutation.removeLanguages,{
       id
     })

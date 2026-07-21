@@ -1,5 +1,5 @@
 import { BundleCollection } from "../bundles/types";
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { ProductCollection } from "../products/types";
 import { ArgsUpdateBundlesDto, ArgsUpdateManyDto, ArgsUpdateProductsDto, CollectionsResolvers, QueryCollectionGQLDto } from "./graphql";
 import { Collection, CollectionImage, CreateCollectionDto, CreateCollectionImageDto, CreateProductOnCollectionDto, FindAllCollectionBundlesDto, FindAllCollectionDto, FindAllCollectionProductsDto, FindAllCollectionImagesDto, FindOneCollectionDto, QueryCollectionBundlesDto, QueryCollectionDto, QueryCollectionProductsDto, UpdateCollectionDto, UpdateCollectionImageDto } from "./types";
@@ -49,7 +49,7 @@ export default class Collections extends ApiModule implements RestApiModuleI, Gr
     return this._graphql(CollectionsResolvers.mutation.updateCollectionBundles,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(CollectionsResolvers.mutation.removeCollections,{
       id
     })

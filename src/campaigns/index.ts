@@ -1,4 +1,4 @@
-import { ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, queryParams, RemoveGQL, RestApiModuleI } from "@maioradv/client-core";
+import { ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, queryParams, BulkResponse, RestApiModuleI } from "@maioradv/client-core";
 import { CreateCampaignDto, Campaign, UpdateCampaignDto, QueryCampaignDto, FindOneCampaignDto } from "./types";
 import { CampaignsResolvers, QueryCampaignGQLDto } from "./graphql";
 
@@ -21,7 +21,7 @@ export default class Campaigns extends ApiModule implements RestApiModuleI, Grap
   list(args: QueryCampaignGQLDto = {}): Promise<PaginatedGQL<Campaign>> {
     return this._graphql(CampaignsResolvers.query.campaigns, args);
   }
-  removeMany(id: number | number[]): Promise<RemoveGQL> {
+  removeMany(id: number | number[]): Promise<BulkResponse> {
     return this._graphql(CampaignsResolvers.mutation.removeCampaigns, { id });
   }
 }

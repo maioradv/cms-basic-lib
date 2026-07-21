@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { CreateLinkCollectionDto, CreateLinkDto, FindOneLinkCollectionDto, Link, LinkCollection, QueryLinkCollectionDto, UpdateLinkCollectionDto } from "./types";
 
 export default class LinkCollections extends ApiModule implements RestApiModuleI {

@@ -1,4 +1,4 @@
-import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, RemoveGQL, queryParams } from "@maioradv/client-core";
+import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { QueryPushSubscriptionGQLDto, PushSubscriptionsResolvers } from "./graphql";
 import { CreatePushSubscriptionDto, QueryPushSubscriptionDto, PushSubscription, UpdatePushSubscriptionDto, PutPushSubscriptionDto, ManagePushSubscriptionDto } from "./types";
 
@@ -31,7 +31,7 @@ export default class PushSubscriptions extends ApiModule implements RestApiModul
     return this._graphql(PushSubscriptionsResolvers.query.pushSubscriptions,args)
   }
 
-  removeMany(id:number|number[]): Promise<RemoveGQL> {
+  removeMany(id:number|number[]): Promise<BulkResponse> {
     return this._graphql(PushSubscriptionsResolvers.mutation.removePushSubscriptions,{
       id
     })
