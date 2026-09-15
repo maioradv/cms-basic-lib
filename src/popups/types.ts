@@ -1,5 +1,5 @@
 import { BooleanClause, StringClause, WhereClausesDto, Sorting, SortingParamsDto, QueryParamsDto, NumberClause, ObjectClause, EnumClause } from "@maioradv/client-core";
-import { Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
+import { Gid, Metadata, Metafield, OmitRequire, Translation, WithRelation, WithRelations } from "@maioradv/types";
 import { CreateImageDto, Image } from "../images/types";
 
 export enum PopupTarget {
@@ -19,6 +19,7 @@ export enum PopupTriggerRule {
   timeoutDelay = 'timeoutDelay',
   maxViewsNumber = 'maxViewsNumber',
   elementDetailId = 'elementDetailId',
+  dayOfWeek = 'dayOfWeek',
 }
 
 export type Popup = {
@@ -42,10 +43,20 @@ export type PopupImage = {
   updatedAt: Date;
 }
 
+export type PopupTriggerOptions = {
+  /** The route pattern when the trigger is eventName:pageView @example /collections/* */
+  route?:string;
+  /** The global ID when the trigger is eventName:viewItem */
+  gid?:Gid<'tidelizio'>,
+  /** The reset views time in ms when the trigger is maxViewsNumber */
+  resetCycle?:number,
+}
+
 export type PopupTrigger = {
   id: number;
   name: string;
   rule: PopupTriggerRule;
+  options: PopupTriggerOptions;
   value: string;
   popupId: number;
   published: boolean;
@@ -61,7 +72,7 @@ export type UpdatePopupDto = Partial<Omit<CreatePopupDto,'triggers'>>
 export type CreatePopupImageDto = OmitRequire<PopupImage,'popupId'|'createdAt'|'updatedAt'|'imageId'> & CreateImageDto
 export type UpdatePopupImageDto = Omit<CreatePopupImageDto,'file'>
 
-export type CreatePopupTriggerDto = OmitRequire<PopupTrigger,'id'|'createdAt'|'updatedAt'|'popupId','name'|'rule'|'value'>
+export type CreatePopupTriggerDto = OmitRequire<PopupTrigger,'id'|'createdAt'|'updatedAt'|'popupId','rule'|'value'>
 export type UpdatePopupTriggerDto = Partial<CreatePopupTriggerDto>
 
 export type FindOnePopupDto = WithRelations<Popup,{
