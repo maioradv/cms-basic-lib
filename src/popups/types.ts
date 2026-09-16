@@ -54,7 +54,7 @@ export type PopupTriggerOptions = {
 
 export type PopupTrigger = {
   id: number;
-  name: string;
+  name: string|null;
   rule: PopupTriggerRule;
   options: PopupTriggerOptions;
   value: string;
