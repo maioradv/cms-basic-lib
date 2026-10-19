@@ -20,6 +20,7 @@ export const CampaignsResolvers:Resolvers<['campaigns'],['removeCampaigns']> = {
             templateId
             segmentId
             scheduledAt
+            options
             createdAt
             updatedAt
             deletedAt

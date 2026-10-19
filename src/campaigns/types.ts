@@ -15,6 +15,11 @@ export enum CampaignChannel {
   email = 'email'
 }
 
+export type CampaignOptions = {
+  timezone?:string,
+  dailyLimit?:number,
+}
+
 export type Campaign = {
   id: number;
   name: string;
@@ -23,6 +28,7 @@ export type Campaign = {
   templateId: number | null;
   segmentId: number | null;
   scheduledAt: Date;
+  options: CampaignOptions;
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
