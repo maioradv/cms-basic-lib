@@ -43,4 +43,7 @@ export default class Audiences extends ApiModule implements RestApiModuleI, Grap
   unsubscribe(token:string): Promise<Audience> {
     return this._graphql(AudiencesResolvers.mutation.unsubscribeAudience, { token });
   }
+  sync(): Promise<void> {
+    return this._graphql(AudiencesResolvers.mutation.syncAudiences);
+  }
 }

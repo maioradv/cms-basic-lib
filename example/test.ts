@@ -11,6 +11,7 @@ async function example() {
     ...Credentials
   })
   await api.auth()
+  api.audiences.sync().then(() => console.log('audiences synced'))
   //api.configs.TiDelizioConfig().then(config => console.log(config))
   //const file = createReadStream(join(__dirname,'pizza1.jpg'))
   /*await api.popups.createImage(9,{
