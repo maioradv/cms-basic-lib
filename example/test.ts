@@ -1,6 +1,6 @@
 //import { createReadStream, writeFile } from "fs";
 //import { join } from "path";
-import { maiorCmsApiClient, ApiVersion, ReservationSource, ReservationStatus } from "../src";
+import { maiorCmsApiClient, ApiVersion, ReservationSource, ReservationStatus, TiDelizioPlan } from "../src";
 
 import Credentials from './credentials.json'
 
@@ -11,7 +11,12 @@ async function example() {
     ...Credentials
   })
   await api.auth()
-  api.audiences.sync().then(() => console.log('audiences synced'))
+  api.configs.initConfig(TiDelizioPlan.premium,{
+    allowMarketing:null
+  }).then(console.log)
+  //api.audiences.findAll().then(console.log)
+  //api.audiences.removeMany([3120,3119,3115,3116]).then(console.log)
+  //api.audiences.sync().then(() => console.log('audiences synced'))
   //api.configs.TiDelizioConfig().then(config => console.log(config))
   //const file = createReadStream(join(__dirname,'pizza1.jpg'))
   /*await api.popups.createImage(9,{

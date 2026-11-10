@@ -1,6 +1,6 @@
 import { RestApiModuleI, ApiModule, GraphApiModuleI, PaginatedDto, PaginatedGQL, BulkResponse, queryParams } from "@maioradv/client-core";
 import { ConfigsResolvers, QueryConfigGQLDto } from "./graphql";
-import { TiDelizioConfig, TiDelizioPlan } from "./service";
+import { TiDelizioConfig, TiDelizioConfigDto, TiDelizioPlan } from "./service";
 import { Config, CreateConfigDto, PutConfigDto, QueryConfigDto, UpdateConfigDto } from "./types";
 
 export default class Configs extends ApiModule implements RestApiModuleI, GraphApiModuleI {
@@ -50,7 +50,7 @@ export default class Configs extends ApiModule implements RestApiModuleI, GraphA
     return this._graphql(ConfigsResolvers.query.Config)
   }
 
-  initConfig(plan:TiDelizioPlan,config?:TiDelizioConfig): Promise<Config[]> {
+  initConfig(plan:TiDelizioPlan,config?:TiDelizioConfigDto): Promise<Config[]> {
     return this._graphql(ConfigsResolvers.mutation.initConfig,{plan,config})
   }
 }

@@ -1,10 +1,12 @@
+import { Nullable } from "@maioradv/types";
+
 export enum TiDelizioPlan {
   standard = 'standard',
   plus = 'plus',
   premium = 'premium'
 }
 
-export interface TiDelizioConfig {
+export type TiDelizioConfig = {
   allowGoogleAnalytics?:boolean;
   allowMetaPixel?:boolean;
   allowGoogleTagManager?:boolean;
@@ -26,3 +28,5 @@ export interface TiDelizioConfig {
   maxProductImageNumber?:number
   maxAdditionalLanguages?:number
 }
+
+export type TiDelizioConfigDto = Nullable<TiDelizioConfig>
