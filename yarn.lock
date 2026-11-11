@@ -27,10 +27,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@maioradv/client-core@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@maioradv/client-core/-/client-core-0.0.8.tgz#57ce8426875814ca0f98fd853920bc2d59467d11"
-  integrity sha512-vAFBuvEjVrvcKGS1jron9DjAPpF5hsL2Wa2/s30QirUH3ZgPa0zCk97Nhc4UHhuxMn4BFc00aRC0Q2qfrYJ/ig==
+"@maioradv/client-core@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@maioradv/client-core/-/client-core-0.0.9.tgz#8616cae2d9631581d3ed461b138ba9984de6aad6"
+  integrity sha512-0nNhiBvZzLTbS0YG4eS+ORaHSiuL2b9wNv98xwH86CKSPM5hJnKHr+AdIPMbvByXR/IkZY5TniuZuamXA/n53Q==
   dependencies:
     "@maioradv/types" "^0.0.8"
     axios "^1.18"
